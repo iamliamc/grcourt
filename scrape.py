@@ -1,5 +1,4 @@
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
-#from BeautifulSoup import BeautifulSoup
 from bs4 import BeautifulSoup
 os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
 print "We are in the right spot"
@@ -10,7 +9,15 @@ print "We are in the right spot"
 opener = urllib2.build_opener()
 opener.addheaders.append(('Cookie', 'JSESSIONID=aaaW_77Tib_t2cdMIotFu'))
 f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
-print f.read()
+raw_html = f.read()
+
+soup = BeautifulSoup(raw_html)
+
+data_medium = soup.find_all(class_="medium")
+
+for data in data_medium:
+  print (data.prettify())
+
 
 # Parse Robots:
 # rp = robotparser.RobotFileParser()
