@@ -1,13 +1,17 @@
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
 from bs4 import BeautifulSoup
-os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
+os.chdir("C:\Users\TPB\Desktop\scrape")
 print "We are in the right spot"
 
 #Raw Cookie:
 #grcourt.org	FALSE	/	FALSE	0	JSESSIONID	aaaW_77Tib_t2cdMIotFu
 
+r = requests.get('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=126415')
+headers = r.headers['set-cookie']
+print headers
+
 opener = urllib2.build_opener()
-opener.addheaders.append(('Cookie', 'JSESSIONID=aaaW_77Tib_t2cdMIotFu'))
+opener.addheaders.append(('Cookie', headers))
 f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
 raw_html = f.read()
 
