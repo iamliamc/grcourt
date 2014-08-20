@@ -1,30 +1,74 @@
 
 #Load Libraries
-import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
+import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time
 from bs4 import BeautifulSoup
 
 #Move to Work
 os.chdir("C:\Users\TPB\Desktop\scrape")
 print "We are in the right spot"
 
+#Our source
+gr_url = 'http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1'
+nmax = 891429
+
 #Get Cookie
-r = requests.get('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=126415')
+r = requests.get('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
 headers = r.headers['set-cookie']
 print headers
 
-#Add cookies to header & Request Page
+#Initialize opener add cookie
 opener = urllib2.build_opener()
 opener.addheaders.append(('Cookie', headers))
-f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
-soup = BeautifulSoup(f.read())
-
-#Parser Here
-data_medium = soup.find_all(class_="medium")
-
-for data in data_medium:
-  print (data.prettify())
 
 
+#StupidCrawl
+count = 100014
+while count < 100019:
+
+	count +=1
+	print count
+	time.sleep(4)
+	
+	#Request Page
+	f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=' + str(count))
+	soup = BeautifulSoup(f.read())
+
+	#Parser Here
+	data_medium = soup.find_all(class_="medium")
+	print data_medium[0:3]
+	print type(data_medium)
+
+	#for data in data_medium:
+	#  print (data.prettify())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################################################################################
 # Parse Robots:
 # rp = robotparser.RobotFileParser()
 # rp.set_url("http://neuro.compute.dtu.dk/robots.txt")
