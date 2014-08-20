@@ -5,7 +5,7 @@ import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
 from bs4 import BeautifulSoup
 
 #Move to Work
-os.chdir("/home/collective/grcourt2/grcourt/")
+os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
 print "We are in the right spot"
 
 #Our source
@@ -21,6 +21,26 @@ print headers
 opener = urllib2.build_opener()
 opener.addheaders.append(('Cookie', headers))
 
+#Recursive Tag Stripper for Later
+def strip_tags(html, invalid_tags):
+	soup = BeautifulSoup(html)
+	for tag in soup.findAll(True):
+		if tag.name in invalid_tags:
+			s = ""
+			for c in tag.contents:
+				if not isinstance(c, NavigableString):
+					c = strip_tags(c, invalid_tags)
+				s += unicode(c)
+			tag.replaceWith(s)
+		return soup
+
+invalid_tags = ["td"]
+
+def parse_gr(bsoup):
+	data_medium = bsoup.find_all(class_="medium")
+	for x in data_medium:
+		for y in x.find_all("td"):
+			print y.get_text(strip=True)
 
 #StupidCrawl
 count = 100012
@@ -30,61 +50,46 @@ while count < 100016:
 	#Request Page
 	f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=' + str(count))
 	soup = BeautifulSoup(f.read())
-
-
 	
 	#Storing the first b tag inside body to data_ccsort 
 	data_ccsort = soup.body.b
-	#Printing to verify capture 
-	print repr(data_ccsort.string)
+	
 	#If statement that sorts out civil cases 
 	if data_ccsort.string == u'Civil Case View':
-	  print "Itsa civler!"
-	  count +=1
-	  continue 
+		print "Civil Case"
+	   
+	#Run Parser Function here:
+		
+		parse_gr(soup)
+		
+		with open("civil_out.csv", 'wb') as csvfile:
+			writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+			#writer.writerow([], [], [], []) choose fields here
+			#writer.writerow() write 
+			count +=1
+			csvfile.close()
+			time.sleep(2.5)
 	else:
-	  data_medium = soup.find_all(class_="medium")
-	  for x in data_medium:
-		for y in x.find_all("td"):
-			print y.get_text(strip=True)
+		print "Criminal Case"
 	
-
-	
-	
-	
-	count +=1
-	time.sleep(2.5)
+	#Run Parser Function here
+		
+		parse_gr(soup)
+		
+		with open("criminal_out.csv", 'wb') as csvfile:
+			writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+			#writer.writerow([], [], [], []) choose fields here
+			#writer.writerow() write returned values from parse_gr
+		
+		
+		
+			count +=1
+			csvfile.close()
+			time.sleep(2.5)
 	#print type(data_medium)
 
 	#for data in data_medium:
 	#  print (data.prettify())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ########################################################################################
 # Parse Robots:
