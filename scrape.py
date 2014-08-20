@@ -5,7 +5,7 @@ import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
 from bs4 import BeautifulSoup
 
 #Move to Work
-os.chdir("C:\Users\TPB\Desktop\scrape")
+os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
 print "We are in the right spot"
 
 #Our source
@@ -23,8 +23,8 @@ opener.addheaders.append(('Cookie', headers))
 
 
 #StupidCrawl
-count = 100014
-while count < 100020:
+count = 100012
+while count < 100013:
 	print 'On Case #:', count
 
 	#Request Page
@@ -33,8 +33,10 @@ while count < 100020:
 
 	#Parser Here
 	data_medium = soup.find_all(class_="medium")
-	for x in data_medium[0:3]:
-		print x.get_text(strip=True)
+	for x in data_medium:
+		for y in x.find_all("td"):
+			print y.get_text(strip=True)
+		
 
 	
 	
