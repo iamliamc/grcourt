@@ -36,6 +36,17 @@ def strip_tags(html, invalid_tags):
 
 invalid_tags = ["td"]
 
+
+#Regular Expressions for Comments:
+#<!-- DEFENDANT -->
+#<!-- CHARGES --> 
+#<!-- SENTENCE --> 
+#<!-- BONDS --> 
+#<!-- Register of Actions -->
+#<!-- Case History -->
+
+re_defendant = re.compile('<!-- DEFENDANT -->'(.*)'<!-- CHARGES -->')
+
 def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
 	for x in data_medium:
@@ -84,7 +95,7 @@ while count < 100016:
 		
 		
 			count +=1
-			csvfile.close()
+			
 			time.sleep(2.5)
 	#print type(data_medium)
 
