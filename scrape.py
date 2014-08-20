@@ -5,7 +5,7 @@ import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
 from bs4 import BeautifulSoup
 
 #Move to Work
-os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
+os.chdir("/home/collective/grcourt2/grcourt/")
 print "We are in the right spot"
 
 #Our source
@@ -24,21 +24,31 @@ opener.addheaders.append(('Cookie', headers))
 
 #StupidCrawl
 count = 100012
-while count < 100013:
+while count < 100016:
 	print 'On Case #:', count
 
 	#Request Page
 	f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=' + str(count))
 	soup = BeautifulSoup(f.read())
 
-	#Parser Here
-	data_medium = soup.find_all(class_="medium")
-	for x in data_medium:
-		for y in x.find_all("td"):
-			print y.get_text(strip=True)
-		
 
 	
+	#Storing the first b tag inside body to data_ccsort 
+	data_ccsort = soup.body.b
+	#Printing to verify capture 
+	print repr(data_ccsort.string)
+	#If statement that sorts out civil cases 
+	if data_ccsort.string == u'Civil Case View':
+	  print "Itsa civler!"
+	  count +=1
+	  continue 
+	else:
+	  data_medium = soup.find_all(class_="medium")
+	  for x in data_medium:
+		for y in x.find_all("td"):
+			print y.get_text(strip=True)
+	
+
 	
 	
 	
