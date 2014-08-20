@@ -1,0 +1,41 @@
+We are in the right spot
+JSESSIONID=aaaw9jTrnVKmLayQIotFu; path=/
+Civil Case View
+Russo, Jim vs Pittman, Amy
+2001-SC-000020402/02/2001
+100015
+Criminal Case View
+Mendez, Guadalupe1997-CT-7405532Spanish
+814 Alpine NWGrand Rapids
+                        ,
+                        MI
+                        49504CaucasianM506
+100016
+Criminal Case View
+Sledge, Kenneth Howard2001-CT-0010351
+742 North NEGrand Rapids
+                        ,
+                        MI
+                        49503BlackM509
+100017
+Criminal Case View
+Smith, James Leroy2001-CT-0010269
+4610 Gardens Blvd NWGrand Rapids
+                        ,
+                        MI
+                        49544M508
+100018
+Criminal Case View
+Sodhi, Harder Singh2001-CT-0016893
+1797 Grand Ridge Ct NEGrand Rapids
+                        ,
+                        MI
+                        49525M511
+100019
+Criminal Case View
+Sodini-johnson, Joshua Dalton2001-CT-0012214
+442 1/2 Bridge ST NWGrand Rapids
+                        ,
+                        MI
+                        49504CaucasianM
+100020

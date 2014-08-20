@@ -1,5 +1,6 @@
 
 #Load Libraries
+from __future__ import division
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time
 from bs4 import BeautifulSoup
 
@@ -23,20 +24,25 @@ opener.addheaders.append(('Cookie', headers))
 
 #StupidCrawl
 count = 100014
-while count < 100019:
+while count < 100020:
+	print 'On Case #:', count
 
-	count +=1
-	print count
-	time.sleep(4)
-	
 	#Request Page
 	f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=' + str(count))
 	soup = BeautifulSoup(f.read())
 
 	#Parser Here
 	data_medium = soup.find_all(class_="medium")
-	print data_medium[0:3]
-	print type(data_medium)
+	for x in data_medium[0:3]:
+		print x.get_text(strip=True)
+
+	
+	
+	
+	
+	count +=1
+	time.sleep(2.5)
+	#print type(data_medium)
 
 	#for data in data_medium:
 	#  print (data.prettify())
