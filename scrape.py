@@ -1,22 +1,24 @@
+
+#Load Libraries
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
 from bs4 import BeautifulSoup
+
+#Move to Work
 os.chdir("C:\Users\TPB\Desktop\scrape")
 print "We are in the right spot"
 
-#Raw Cookie:
-#grcourt.org	FALSE	/	FALSE	0	JSESSIONID	aaaW_77Tib_t2cdMIotFu
-
+#Get Cookie
 r = requests.get('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=126415')
 headers = r.headers['set-cookie']
 print headers
 
+#Add cookies to header & Request Page
 opener = urllib2.build_opener()
 opener.addheaders.append(('Cookie', headers))
 f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
-raw_html = f.read()
+soup = BeautifulSoup(f.read())
 
-soup = BeautifulSoup(raw_html)
-
+#Parser Here
 data_medium = soup.find_all(class_="medium")
 
 for data in data_medium:
@@ -40,8 +42,6 @@ for data in data_medium:
 # print response.read()      # the text of the page
 # response1 = br.response()  # get the response again
 # print response1.read()     # can apply lxml.html.fromstring()
-
-
 
 # user_agent = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3'
 # headers = { 'JSESSIONID' : 'aaa1sKrRjU2bs7NGIotFu' }
