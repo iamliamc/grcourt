@@ -49,13 +49,25 @@ re_defendant = re.compile("'<!-- DEFENDANT -->'(.*)'<!-- CHARGES -->'")
 
 def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
-	for x in data_medium:
-		for y in x.find_all("td"):
-			print y.get_text(strip=True)
+	data_XLheader = bsoup.find_all(class_="extralarge")
+	#re_defendant = re.compile('<!-- DEFENDANT -->(.+?)<!-- CHARGES -->')
+	#print str(bsoup)
+	#m = re.search('<!-- DEFENDANT -->(.*?)<!-- CHARGES -->(.*)', str(bsoup))
+	p = re.compile(r'.*<!-- DEFENDANT -->(.*)<!-- CHARGES -->.*', re.DOTALL)
+	print p.findall(str(bsoup))
+	
+		
+	#for x in data_XLheader:
+	#	print x
+		
+	# for x in data_medium:
+		# for y in x.find_all("td"):
+			# #print y.get_text(strip=True)
+			# print y.get_text
 
 #StupidCrawl
-count = 100012
-while count < 100016:
+count = 100014
+while count < 100018:
 	print 'On Case #:', count
 
 	#Request Page
