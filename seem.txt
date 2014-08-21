@@ -1,0 +1,165 @@
+We are in the right spot
+JSESSIONID=aaa8mdwnNJifhhCDrv1Fu; path=/
+On Case #: 100012
+Civil Case Continue...
+ZZZZZZZ...
+On Case #: 100013
+Civil Case Continue...
+ZZZZZZZ...
+On Case #: 100014
+Civil Case Continue...
+ZZZZZZZ...
+On Case #: 100015
+Criminal Case
+Mendez, Guadalupe
+1997-CT-7405532
+Spanish
+814 Alpine NWGrand Rapids
+                        ,
+                        MI
+                        49504
+Caucasian
+M
+506
+04/18/1969
+150
+BRO
+BRO
+
+
+
+No Judge
+08/03/1997
+
+Excess Noise-Use of Vehicle:Squeal Tires, etc.
+Responsible by Default
+10/01/1997
+$
+                        84.00
+0
+N
+$
+                        0.00
+
+N
+
+08/03/1997
+New Case Filed
+No Judge
+10/01/1997
+Responsible by Default (0301 Excess Noise-Use of Vehicle:Squeal Tires, etc.)
+No Judge
+02/02/2001
+Case status changed:  adjudicated
+No Judge
+11/15/2002
+Case status changed:  closed
+No Judge
+2012-FY-0001598
+Att Domestic Violence 3rd
+Closed
+09/04/2012
+2010-FY-0000289
+Att Domestic Violence 3rd
+Closed
+02/16/2010
+2010-FY-0000289
+Supp 3
+Closed
+02/16/2010
+2007-OM-0000976
+Creating a Disturbance
+Closed
+03/26/2007
+2006-OM-0000849
+Trespassing
+Closed
+03/01/2006
+2005-OT-0005899
+Drove While Suspended,Revoked,Denied
+Closed
+12/15/2005
+2005-OT-0005919
+Fail To Stop At Property Damage Accident
+Closed
+12/15/2005
+2005-SM-0002149
+Retail Fraud-2nd Degree
+Closed
+12/01/2005
+2004-FY-0002367
+Domestic Violence, 3rd Offense
+Closed
+11/19/2004
+2003-FY-0001728
+Domestic Violence
+Closed
+08/15/2003
+2003-FY-0002480
+Assault
+Closed
+11/24/2003
+2003-FY-0002480
+Domestic Violence, 2nd offense
+Closed
+11/24/2003
+2003-FY-0002480
+Probation Violation
+Closed
+11/24/2003
+2003-FY-0001728
+Felonious Assault
+Closed
+08/15/2003
+2003-OM-0002641
+Creating a Disturbance
+Closed
+07/25/2003
+2002-SM-0001702
+Retail Fraud 3rd
+Closed
+09/18/2002
+2001-SD-0001352
+OUIL/PER SE, 2nd Offense
+Closed
+03/21/2001
+2001-CD-0000801
+OUIL
+Closed
+02/20/2001
+2001-CT-0000802
+Registration plate violation-Improper/invalid/none
+Closed
+02/16/2001
+2001-SD-0001352
+Contempt of Court
+Closed
+03/21/2001
+2001-CT-0000802
+Drove While Suspended,Revoked,Denied
+Closed
+02/16/2001
+2000-CM-0004873
+Removing Property Not Own
+Closed
+12/11/2000
+2000-CT-0002329
+Open Alcohol in Motor Vehicle
+Closed
+03/24/2000
+1997-CT-7405532
+Excess Noise-Use of Vehicle:Squeal Tires, etc.
+Closed
+08/03/1997
+1997-CT-7405533
+Improper overtaking or passing
+Closed
+08/03/1997
+1997-CT-7697042
+Excessive speed for conditions
+Closed
+10/01/1997
+1997-CT-7405531
+Disobey a traffic signal
+Closed
+08/03/1997

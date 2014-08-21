@@ -5,7 +5,7 @@ import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
 from bs4 import BeautifulSoup
 
 #Move to Work
-os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
+os.chdir("C:\Users\TPB\Desktop\scrape")
 print "We are in the right spot"
 
 #Our source
@@ -45,7 +45,7 @@ invalid_tags = ["td"]
 #<!-- Register of Actions -->
 #<!-- Case History -->
 
-re_defendant = re.compile('<!-- DEFENDANT -->'(.*)'<!-- CHARGES -->')
+re_defendant = re.compile("'<!-- DEFENDANT -->'(.*)'<!-- CHARGES -->'")
 
 def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
@@ -67,19 +67,21 @@ while count < 100016:
 	
 	#If statement that sorts out civil cases 
 	if data_ccsort.string == u'Civil Case View':
-		print "Civil Case"
+		print "Civil Case Continue..."
 	   
 	#Run Parser Function here:
 		
-		parse_gr(soup)
+		# parse_gr(soup)
 		
-		with open("civil_out.csv", 'wb') as csvfile:
-			writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-			#writer.writerow([], [], [], []) choose fields here
-			#writer.writerow() write 
-			count +=1
-			csvfile.close()
-			time.sleep(2.5)
+		# with open("civil_out.csv", 'wb') as csvfile:
+			# writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+			# #writer.writerow([], [], [], []) choose fields here
+			# #writer.writerow() write 
+		count +=1
+		# csvfile.close()
+		print "ZZZZZZZ..."
+		time.sleep(2.5)
+					
 	else:
 		print "Criminal Case"
 	
@@ -95,7 +97,7 @@ while count < 100016:
 		
 		
 			count +=1
-			
+			csvfile.close()
 			time.sleep(2.5)
 	#print type(data_medium)
 
