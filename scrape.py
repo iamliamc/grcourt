@@ -47,6 +47,8 @@ def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
 	data_XLheader = bsoup.find_all(class_="extralarge")
 	
+	#def_list fields ["Defendant", "Case Number", "Language", "Mailing Address", "Race", "Sex", "Height", "DOB", "Weight", "Hair", "Eyes", "Attorney", "Firm", "Attorney Phone", "Judge"]
+	def_list = []
 	regex_defendant = re.compile(r'.*<!-- DEFENDANT -->(.*)<!-- CHARGES -->.*', re.DOTALL)
 	sec_defendant = regex_defendant.findall(str(bsoup))
 	
@@ -65,7 +67,13 @@ def parse_gr(bsoup):
 	regex_casehist = re.compile(r'.*<!-- Case History -->(.*)<!-- END Main -->.*', re.DOTALL)
 	sec_casehist = regex_casehist.findall(str(bsoup))
 	
-	print sec_charges
+	for table in sec_defendant:
+		table_soup = BeautifulSoup(table)
+		#print len(table_soup.find_all(class_="medium"))
+		for x in table_soup.find_all(class_="medium"):
+			for bit in x.find_all("td"):
+				def_list.append(str(bit.get_text(strip=True)))
+		print def_list, len(def_list)
 
 	#Print Various Stuff From Soup:
 	
@@ -76,6 +84,7 @@ def parse_gr(bsoup):
 		# for y in x.find_all("td"):
 			# #print y.get_text(strip=True)
 			# print y.get_text
+	return def_list
 
 			
 #Main while loop with Crawler calls parse_gr
