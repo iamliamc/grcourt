@@ -1,11 +1,10 @@
-
 #Load Libraries
 from __future__ import division
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time
 from bs4 import BeautifulSoup
 
 #Move to Work
-os.chdir("C:\Users\TPB\Desktop\scrape")
+os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
 print "We are in the right spot"
 
 #Our source
@@ -36,27 +35,40 @@ def strip_tags(html, invalid_tags):
 
 invalid_tags = ["td"]
 
-
-#Regular Expressions for Comments:
-#<!-- DEFENDANT -->
-#<!-- CHARGES --> 
-#<!-- SENTENCE --> 
-#<!-- BONDS --> 
-#<!-- Register of Actions -->
-#<!-- Case History -->
-
-re_defendant = re.compile("'<!-- DEFENDANT -->'(.*)'<!-- CHARGES -->'")
+#Regular Expressions for Splitting Page By Comments Storing Results in Variables:
+#<!-- DEFENDANT --> == sec_defendant
+#<!-- CHARGES -->  == sec_charges
+#<!-- SENTENCE --> == sec_sentence
+#<!-- BONDS --> == sec_bonds
+#<!-- Register of Actions --> sec_roa
+#<!-- Case History --> sec_casehist
 
 def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
 	data_XLheader = bsoup.find_all(class_="extralarge")
-	#re_defendant = re.compile('<!-- DEFENDANT -->(.+?)<!-- CHARGES -->')
-	#print str(bsoup)
-	#m = re.search('<!-- DEFENDANT -->(.*?)<!-- CHARGES -->(.*)', str(bsoup))
-	p = re.compile(r'.*<!-- DEFENDANT -->(.*)<!-- CHARGES -->.*', re.DOTALL)
-	print p.findall(str(bsoup))
 	
-		
+	regex_defendant = re.compile(r'.*<!-- DEFENDANT -->(.*)<!-- CHARGES -->.*', re.DOTALL)
+	sec_defendant = regex_defendant.findall(str(bsoup))
+	
+	regex_charges = re.compile(r'.*<!-- CHARGES -->(.*)<!-- SENTENCE -->.*', re.DOTALL)
+	sec_charges = regex_charges.findall(str(bsoup))
+	
+	regex_sentence = re.compile(r'.*<!-- SENTENCE -->(.*)<!-- BONDS -->.*', re.DOTALL)
+	sec_sentence = regex_sentence.findall(str(bsoup))
+	
+	regex_bonds = re.compile(r'.*<!-- BONDS -->(.*)<!-- Register of Actions -->.*', re.DOTALL)
+	sec_bonds = regex_bonds.findall(str(bsoup))
+	
+	regex_roa = re.compile(r'.*<!-- Register of Actions -->(.*)<!-- Case History -->.*', re.DOTALL)
+	sec_roa = regex_roa.findall(str(bsoup))
+	
+	regex_casehist = re.compile(r'.*<!-- Case History -->(.*)<!-- END Main -->.*', re.DOTALL)
+	sec_casehist = regex_casehist.findall(str(bsoup))
+	
+	print sec_charges
+
+	#Print Various Stuff From Soup:
+	
 	#for x in data_XLheader:
 	#	print x
 		
@@ -65,7 +77,8 @@ def parse_gr(bsoup):
 			# #print y.get_text(strip=True)
 			# print y.get_text
 
-#StupidCrawl
+			
+#Main while loop with Crawler calls parse_gr
 count = 100014
 while count < 100018:
 	print 'On Case #:', count
@@ -80,17 +93,7 @@ while count < 100018:
 	#If statement that sorts out civil cases 
 	if data_ccsort.string == u'Civil Case View':
 		print "Civil Case Continue..."
-	   
-	#Run Parser Function here:
-		
-		# parse_gr(soup)
-		
-		# with open("civil_out.csv", 'wb') as csvfile:
-			# writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-			# #writer.writerow([], [], [], []) choose fields here
-			# #writer.writerow() write 
 		count +=1
-		# csvfile.close()
 		print "ZZZZZZZ..."
 		time.sleep(2.5)
 					
@@ -111,11 +114,10 @@ while count < 100018:
 			count +=1
 			csvfile.close()
 			time.sleep(2.5)
-	#print type(data_medium)
-
-	#for data in data_medium:
-	#  print (data.prettify())
-
+	
+	
+	
+	
 ########################################################################################
 # Parse Robots:
 # rp = robotparser.RobotFileParser()
