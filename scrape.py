@@ -1,6 +1,6 @@
 #Load Libraries
 from __future__ import division
-import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time
+import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random
 from bs4 import BeautifulSoup
 
 #Move to Work
@@ -20,20 +20,14 @@ print headers
 opener = urllib2.build_opener()
 opener.addheaders.append(('Cookie', headers))
 
-#IGNORE Recursive Tag Stripper for Later
-def strip_tags(html, invalid_tags):
-	soup = BeautifulSoup(html)
-	for tag in soup.findAll(True):
-		if tag.name in invalid_tags:
-			s = ""
-			for c in tag.contents:
-				if not isinstance(c, NavigableString):
-					c = strip_tags(c, invalid_tags)
-				s += unicode(c)
-			tag.replaceWith(s)
-		return soup
+def stable_table(regex_return, sec_list):		
+	for item in regex_return:
+		table_soup = BeautifulSoup(item)
+		for x in table_soup.find_all(class_="medium"):
+			for td_tag in x.find_all("td"):
+				sec_list.append(str(td_tag.get_text(strip=True)))
+		return sec_list, len(sec_list)
 
-invalid_tags = ["td"]
 
 #Regular Expressions for Splitting Page By Comments Storing Results in Variables:
 #<!-- DEFENDANT --> == sec_defendant
@@ -53,28 +47,52 @@ def parse_gr(bsoup):
 	regex_defendant = re.compile(r'.*<!-- DEFENDANT -->(.*)<!-- CHARGES -->.*', re.DOTALL)
 	sec_defendant = regex_defendant.findall(str(bsoup))
 	
+	#chage_list fields ["OffenseDate1", "Date Closed1", "Offense Description"1, Disposition"1, "Disposition Date1", OffenseDate2..."]
+	charge_list = []
 	regex_charges = re.compile(r'.*<!-- CHARGES -->(.*)<!-- SENTENCE -->.*', re.DOTALL)
 	sec_charges = regex_charges.findall(str(bsoup))
 	
+	sen_list = []
 	regex_sentence = re.compile(r'.*<!-- SENTENCE -->(.*)<!-- BONDS -->.*', re.DOTALL)
 	sec_sentence = regex_sentence.findall(str(bsoup))
 	
+	bonds_list = []
 	regex_bonds = re.compile(r'.*<!-- BONDS -->(.*)<!-- Register of Actions -->.*', re.DOTALL)
 	sec_bonds = regex_bonds.findall(str(bsoup))
 	
+	roa_list = []
 	regex_roa = re.compile(r'.*<!-- Register of Actions -->(.*)<!-- Case History -->.*', re.DOTALL)
 	sec_roa = regex_roa.findall(str(bsoup))
 	
+	case_list = []
 	regex_casehist = re.compile(r'.*<!-- Case History -->(.*)<!-- END Main -->.*', re.DOTALL)
 	sec_casehist = regex_casehist.findall(str(bsoup))
 	
-	for item in sec_defendant:
-		table_soup = BeautifulSoup(item)
-		for x in table_soup.find_all(class_="medium"):
-			for td_tag in x.find_all("td"):
-				def_list.append(str(td_tag.get_text(strip=True)))
-		print def_list, len(def_list)
+	#PRE stable_table function KEEP
+	# for item in sec_defendant:
+		# table_soup = BeautifulSoup(item)
+		# for x in table_soup.find_all(class_="medium"):
+			# for td_tag in x.find_all("td"):
+				# def_list.append(str(td_tag.get_text(strip=True)))
+		# print def_list, len(def_list)
+	
+	print "++++++++++++++++++++++++++++++++++++++++++++++++"
+	section_defendant = stable_table(sec_defendant, def_list)
+	print section_defendant
+	print "************************************************"
+	section_return = stable_table(sec_charges, charge_list)
+	print section_return
+	
+	# for item in sec_charges:
+		# table_soup = BeautifulSoup(item)
+		# for x in table_soup.find_all(class_="medium"):
+			# for td_tag in x.find_all("td"):
+				# charge_list.append(str(td_tag.get_text(strip=True)))
+		# print charge_list, len(charge_list)
 
+
+		
+		
 	#Print Various Stuff From Soup:
 	########################################################################################
 	#for x in data_XLheader:
@@ -85,12 +103,18 @@ def parse_gr(bsoup):
 			# #print y.get_text(strip=True)
 			# print y.get_text
 	########################################################################################
-	return def_list
+	return def_list, charge_list
 
-			
-#Main while loop with Crawler calls parse_gr
-count = 100014
-while count < 100018:
+
+	
+	
+#Main while loop with Crawler calls parse_gr Choose a different page each run
+count = random.randint(1,100000)
+
+#Double Charges case count test
+#count = 169698
+
+while count < 1100018:
 	print 'On Case #:', count
 
 	#Request Page
