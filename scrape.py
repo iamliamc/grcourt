@@ -76,20 +76,25 @@ def parse_gr(bsoup):
 				# def_list.append(str(td_tag.get_text(strip=True)))
 		# print def_list, len(def_list)
 	
-	print "++++++++++++++++++++++++++++++++++++++++++++++++"
+	print "+++++++++DEFENDANT+++++++++++++++"
 	section_defendant = stable_table(sec_defendant, def_list)
-	print section_defendant
-	print "************************************************"
-	section_return = stable_table(sec_charges, charge_list)
-	print section_return
+	print section_defendant, '\n'
 	
-	# for item in sec_charges:
-		# table_soup = BeautifulSoup(item)
-		# for x in table_soup.find_all(class_="medium"):
-			# for td_tag in x.find_all("td"):
-				# charge_list.append(str(td_tag.get_text(strip=True)))
-		# print charge_list, len(charge_list)
-
+	print "**********CHARGES********************"
+	section_charges = stable_table(sec_charges, charge_list)
+	print section_charges, '\n'
+	
+	print "+++++++++++++++++SENTENCE+++++++++++++++"
+	section_sentence = stable_table(sec_sentence, sen_list)
+	print section_sentence, '\n'
+	
+	print "+++++++++++++BONDS+++++++++++++++++++++"
+	section_bonds = stable_table(sec_bonds, bonds_list)
+	print section_bonds, '\n'
+	
+	print "+++++++++++++Case History+++++++++++++++++++++"
+	section_casehist = stable_table(sec_casehist, case_list)
+	print section_casehist, '\n'
 
 		
 		
