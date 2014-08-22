@@ -1,4 +1,5 @@
-#Load Libraries
+#!/usr/bin/python
+# -*- coding: <encoding name> -*-
 from __future__ import division
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random
 from bs4 import BeautifulSoup
@@ -119,6 +120,8 @@ count = random.randint(1,100000)
 #Double Charges case count test
 #count = 169698
 
+#Check ascii encoding error
+#count = 303
 while count < 1100018:
 	print 'On Case #:', count
 
