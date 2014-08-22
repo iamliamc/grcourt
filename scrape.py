@@ -4,7 +4,7 @@ import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser
 from bs4 import BeautifulSoup
 
 #Move to Work
-os.chdir("C:\Users\lconsidine\Desktop\grcourt\grcourt")
+#os.chdir("C:\Users\TPB\Desktop\scrape")
 print "We are in the right spot"
 
 #Our source
@@ -20,7 +20,7 @@ print headers
 opener = urllib2.build_opener()
 opener.addheaders.append(('Cookie', headers))
 
-#Recursive Tag Stripper for Later
+#IGNORE Recursive Tag Stripper for Later
 def strip_tags(html, invalid_tags):
 	soup = BeautifulSoup(html)
 	for tag in soup.findAll(True):
@@ -43,6 +43,7 @@ invalid_tags = ["td"]
 #<!-- Register of Actions --> sec_roa
 #<!-- Case History --> sec_casehist
 
+#Define main parse HTML function
 def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
 	data_XLheader = bsoup.find_all(class_="extralarge")
@@ -67,16 +68,15 @@ def parse_gr(bsoup):
 	regex_casehist = re.compile(r'.*<!-- Case History -->(.*)<!-- END Main -->.*', re.DOTALL)
 	sec_casehist = regex_casehist.findall(str(bsoup))
 	
-	for table in sec_defendant:
-		table_soup = BeautifulSoup(table)
-		#print len(table_soup.find_all(class_="medium"))
+	for item in sec_defendant:
+		table_soup = BeautifulSoup(item)
 		for x in table_soup.find_all(class_="medium"):
-			for bit in x.find_all("td"):
-				def_list.append(str(bit.get_text(strip=True)))
+			for td_tag in x.find_all("td"):
+				def_list.append(str(td_tag.get_text(strip=True)))
 		print def_list, len(def_list)
 
 	#Print Various Stuff From Soup:
-	
+	########################################################################################
 	#for x in data_XLheader:
 	#	print x
 		
@@ -84,6 +84,7 @@ def parse_gr(bsoup):
 		# for y in x.find_all("td"):
 			# #print y.get_text(strip=True)
 			# print y.get_text
+	########################################################################################
 	return def_list
 
 			
@@ -112,11 +113,12 @@ while count < 100018:
 	#Run Parser Function here
 		
 		parse_gr(soup)
-		
+	
+	#Write final values in known order	
 		with open("criminal_out.csv", 'wb') as csvfile:
 			writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-			#writer.writerow([], [], [], []) choose fields here
-			#writer.writerow() write returned values from parse_gr
+			# writer.writerow([], [], [], []) choose fields here
+			# writer.writerow() write returned values from parse_gr
 		
 		
 		
