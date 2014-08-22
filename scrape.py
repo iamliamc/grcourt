@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: <encoding name> -*-
+# -*- coding: utf-8 -*-
 from __future__ import division
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random
 from bs4 import BeautifulSoup
