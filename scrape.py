@@ -76,6 +76,7 @@ def parse_gr(bsoup):
 	def_list = []
 	regex_defendant = re.compile(r'.*<!-- DEFENDANT -->(.*)<!-- CHARGES -->.*', re.DOTALL)
 	sec_defendant = regex_defendant.findall(str(bsoup))
+
 	
 	#chage_list fields ["OffenseDate1", "Date Closed1", "Offense Description"1, Disposition"1, "Disposition Date1", OffenseDate2..."]
 	charge_list = []
@@ -100,24 +101,35 @@ def parse_gr(bsoup):
 	
 	print "+++++++++DEFENDANT+++++++++++++++"
 	section_defendant = stable_table_address(sec_defendant, def_list)
+	str_def = str(section_defendant[3]).replace('\n', ' ')
+	section_defendant[3] = ' '.join(str_def.split())
 	print section_defendant, '\n'
 	
 	print "**********CHARGES********************"
 	section_charges = stable_table(sec_charges, charge_list)
-	print handle_mult(section_charges, [], 5), '\n'
+	section_charges = handle_mult(section_charges, [], 5)
+	print section_charges, '\n'
 	
 	print "+++++++++++++++++SENTENCE+++++++++++++++"
 	section_sentence = stable_table(sec_sentence, sen_list)
+	count_fields = 0
+	for x in section_sentence:
+		x = str(x).replace('\n', ' ')
+		x = ' '.join(x.split())
+		section_sentence[count_fields] = x
+		count_fields += 1
+		
 	print section_sentence, '\n'
 	
 	print "+++++++++++++BONDS+++++++++++++++++++++"
 	section_bonds = stable_table(sec_bonds, bonds_list)
+	section_bonds = handle_mult(section_bonds, [], 4)
 	print handle_mult(section_bonds, [], 4), '\n'
 	
 	print "+++++++++++++Case History+++++++++++++++++++++"
 	section_casehist = stable_table(sec_casehist, case_list)
+	section_casehist = handle_mult(section_casehist, [], 4)
 	print handle_mult(section_casehist, [], 4), '\n'
-
 		
 	#Print Various Stuff From Soup:
 	########################################################################################
@@ -131,17 +143,16 @@ def parse_gr(bsoup):
 	########################################################################################
 	
 	
-	str_def = str(section_defendant[3]).replace('\n', ' ')
-	section_defendant[3] = ' '.join(str_def.split())
+
 	
 	#Write final values in known order	
-	with open("criminal_out.csv", 'wb') as csvfile:
+	with open("criminal_out.csv", 'a') as csvfile:
 		writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-		writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3]])
+		writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges, section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds, section_casehist])
 		# writer.writerow() write returned values from parse_gr
 		csvfile.close()
 		time.sleep(2.5)
-
+		
 	
 	
 	return def_list, charge_list
@@ -179,6 +190,8 @@ while count < 1100018:
 	#Run Parser Function here
 		
 		parse_gr(soup)
+		count += 1
+
 	
 
 	
