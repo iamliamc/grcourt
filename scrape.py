@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import division
-import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random
+import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random, string
 from bs4 import BeautifulSoup
 
 #Move to Work
@@ -11,6 +11,10 @@ print "We are in the right spot"
 #Our source
 gr_url = 'http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1'
 nmax = 891429
+
+#High Count
+#Main while loop with Crawler calls parse_gr Choose a different page each run
+count = random.randint(1,100000)
 
 #Get Cookie
 r = requests.get('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
@@ -26,9 +30,21 @@ def stable_table(regex_return, sec_list):
 		table_soup = BeautifulSoup(item)
 		for x in table_soup.find_all(class_="medium"):
 			for td_tag in x.find_all("td"):
+				#print td_tag
 				sec_list.append(str(td_tag.get_text(strip=True)))
 		return sec_list
 
+def stable_table_address(regex_return, sec_list):		
+	for item in regex_return:
+		table_soup = BeautifulSoup(item)
+		for x in table_soup.find_all(class_="medium"):
+			x = str(x).replace('<br>', ' ')
+			x = BeautifulSoup(x)
+			for td_tag in x.find_all("td"):
+				#FIGURE OUT HOW TO REPLACE <br> tag with ' '
+				sec_list.append(str(td_tag.get_text(strip=True)))
+		return sec_list		
+		
 		
 def handle_mult(section_inf, next_list, fields):
 	numb = int(len(section_inf)/fields)
@@ -53,6 +69,8 @@ def handle_mult(section_inf, next_list, fields):
 def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
 	data_XLheader = bsoup.find_all(class_="extralarge")
+	data_ccsort = soup.body.b
+	print data_ccsort.string
 	
 	#def_list fields ["Defendant", "Case Number", "Language", "Mailing Address", "Race", "Sex", "Height", "DOB", "Weight", "Hair", "Eyes", "Attorney", "Firm", "Attorney Phone", "Judge"]
 	def_list = []
@@ -80,16 +98,8 @@ def parse_gr(bsoup):
 	regex_casehist = re.compile(r'.*<!-- Case History -->(.*)<!-- END Main -->.*', re.DOTALL)
 	sec_casehist = regex_casehist.findall(str(bsoup))
 	
-	#PRE stable_table function KEEP
-	# for item in sec_defendant:
-		# table_soup = BeautifulSoup(item)
-		# for x in table_soup.find_all(class_="medium"):
-			# for td_tag in x.find_all("td"):
-				# def_list.append(str(td_tag.get_text(strip=True)))
-		# print def_list, len(def_list)
-	
 	print "+++++++++DEFENDANT+++++++++++++++"
-	section_defendant = stable_table(sec_defendant, def_list)
+	section_defendant = stable_table_address(sec_defendant, def_list)
 	print section_defendant, '\n'
 	
 	print "**********CHARGES********************"
@@ -119,13 +129,27 @@ def parse_gr(bsoup):
 			# #print y.get_text(strip=True)
 			# print y.get_text
 	########################################################################################
+	
+	
+	str_def = str(section_defendant[3]).replace('\n', ' ')
+	section_defendant[3] = ' '.join(str_def.split())
+	
+	#Write final values in known order	
+	with open("criminal_out.csv", 'wb') as csvfile:
+		writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+		writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3]])
+		# writer.writerow() write returned values from parse_gr
+		csvfile.close()
+		time.sleep(2.5)
+
+	
+	
 	return def_list, charge_list
 
 
 	
 	
-#Main while loop with Crawler calls parse_gr Choose a different page each run
-count = random.randint(1,100000)
+
 
 #Double Charges case count test
 #count = 169698
@@ -156,18 +180,7 @@ while count < 1100018:
 		
 		parse_gr(soup)
 	
-	#Write final values in known order	
-		with open("criminal_out.csv", 'wb') as csvfile:
-			writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-			# writer.writerow([], [], [], []) choose fields here
-			# writer.writerow() write returned values from parse_gr
-		
-		
-		
-			count +=1
-			csvfile.close()
-			time.sleep(2.5)
-	
+
 	
 	
 	
