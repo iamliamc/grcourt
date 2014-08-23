@@ -131,6 +131,12 @@ def parse_gr(bsoup):
 	
 	print "+++++++++++++BONDS+++++++++++++++++++++"
 	section_bonds = stable_table(sec_bonds, bonds_list)
+	count_fields = 0
+	for x in section_bonds:
+		x = str(x).replace('\n', ' ')
+		x = ' '.join(x.split())
+		section_bonds[count_fields] = x
+		count_fields += 1
 	section_bonds = handle_mult(section_bonds, [], 4)
 	print handle_mult(section_bonds, [], 4), '\n'
 	
