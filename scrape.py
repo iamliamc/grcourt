@@ -94,7 +94,7 @@ def parse_gr(bsoup):
 	
 	print "**********CHARGES********************"
 	section_charges = stable_table(sec_charges, charge_list)
-	print handle_mult(section_charges, [], 5)
+	print handle_mult(section_charges, [], 5), '\n'
 	
 	print "+++++++++++++++++SENTENCE+++++++++++++++"
 	section_sentence = stable_table(sec_sentence, sen_list)
@@ -102,26 +102,12 @@ def parse_gr(bsoup):
 	
 	print "+++++++++++++BONDS+++++++++++++++++++++"
 	section_bonds = stable_table(sec_bonds, bonds_list)
-	print section_bonds, '\n'
+	print handle_mult(section_bonds, [], 4), '\n'
 	
 	print "+++++++++++++Case History+++++++++++++++++++++"
 	section_casehist = stable_table(sec_casehist, case_list)
-	#If there is more than one case in case history make 
-	
-	total_cases = int(len(section_casehist)/4)
-	s_index = 0
-	e_index = 4
-	reg_casehist = []
-	for case in range(total_cases):
-		reg_casehist.append(tuple(section_casehist[s_index:e_index]))
-		s_index += 4
-		e_index += 4
-	print reg_casehist
-			
-		
-	#print section_casehist, '\n'
+	print handle_mult(section_casehist, [], 4), '\n'
 
-		
 		
 	#Print Various Stuff From Soup:
 	########################################################################################
