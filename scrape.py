@@ -29,6 +29,17 @@ def stable_table(regex_return, sec_list):
 				sec_list.append(str(td_tag.get_text(strip=True)))
 		return sec_list
 
+		
+def handle_mult(section_inf, next_list, fields):
+	numb = int(len(section_inf)/fields)
+	s_index = 0
+	e_index = fields
+	next_list = []
+	for case in range(numb):
+		next_list.append(tuple(section_inf[s_index:e_index]))
+		s_index += fields
+		e_index += fields
+	return next_list
 
 #Regular Expressions for Splitting Page By Comments Storing Results in Variables:
 #<!-- DEFENDANT --> == sec_defendant
@@ -83,7 +94,7 @@ def parse_gr(bsoup):
 	
 	print "**********CHARGES********************"
 	section_charges = stable_table(sec_charges, charge_list)
-	print section_charges, '\n'
+	print handle_mult(section_charges, [], 5)
 	
 	print "+++++++++++++++++SENTENCE+++++++++++++++"
 	section_sentence = stable_table(sec_sentence, sen_list)
@@ -106,7 +117,6 @@ def parse_gr(bsoup):
 		s_index += 4
 		e_index += 4
 	print reg_casehist
-			
 			
 		
 	#print section_casehist, '\n'
