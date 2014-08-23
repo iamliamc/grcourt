@@ -96,20 +96,20 @@ def parse_gr(bsoup):
 	print "+++++++++++++Case History+++++++++++++++++++++"
 	section_casehist = stable_table(sec_casehist, case_list)
 	#If there is more than one case in case history make 
-	if len(section_casehist) > 4:
-		total_cases = int(len(section_casehist)/4)
-		s_index = 0
-		e_index = 4
-		reg_casehist = []
-		for case in range(total_cases):
-			reg_casehist.append(tuple(section_casehist[s_index:e_index]))
-			s_index += 4
-			e_index += 4
-		print reg_casehist
+	
+	total_cases = int(len(section_casehist)/4)
+	s_index = 0
+	e_index = 4
+	reg_casehist = []
+	for case in range(total_cases):
+		reg_casehist.append(tuple(section_casehist[s_index:e_index]))
+		s_index += 4
+		e_index += 4
+	print reg_casehist
 			
 			
 		
-	print section_casehist, '\n'
+	#print section_casehist, '\n'
 
 		
 		
