@@ -27,7 +27,7 @@ def stable_table(regex_return, sec_list):
 		for x in table_soup.find_all(class_="medium"):
 			for td_tag in x.find_all("td"):
 				sec_list.append(str(td_tag.get_text(strip=True)))
-		return sec_list, len(sec_list)
+		return sec_list
 
 
 #Regular Expressions for Splitting Page By Comments Storing Results in Variables:
@@ -95,6 +95,20 @@ def parse_gr(bsoup):
 	
 	print "+++++++++++++Case History+++++++++++++++++++++"
 	section_casehist = stable_table(sec_casehist, case_list)
+	#If there is more than one case in case history make 
+	if len(section_casehist) > 4:
+		total_cases = int(len(section_casehist)/4)
+		s_index = 0
+		e_index = 4
+		reg_casehist = []
+		for case in range(total_cases):
+			reg_casehist.append(tuple(section_casehist[s_index:e_index]))
+			s_index += 4
+			e_index += 4
+		print reg_casehist
+			
+			
+		
 	print section_casehist, '\n'
 
 		
