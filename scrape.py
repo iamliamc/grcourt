@@ -7,13 +7,11 @@ from bs4 import BeautifulSoup
 #Move to Work
 #os.chdir("C:\Users\TPB\Desktop\scrape")
 print "We are in the right spot"
+os.system("del criminal_out.csv")
 
 #Our source
 gr_url = 'http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1'
 nmax = 891429
-
-#Open Outfile:
-
 
 #High Count
 #Main while loop with Crawler calls parse_gr Choose a different page each run
@@ -41,10 +39,10 @@ def stable_table_address(regex_return, sec_list):
 	for item in regex_return:
 		table_soup = BeautifulSoup(item)
 		for x in table_soup.find_all(class_="medium"):
+		#Replace <br> tag with space
 			x = str(x).replace('<br>', ' ')
 			x = BeautifulSoup(x)
 			for td_tag in x.find_all("td"):
-				#FIGURE OUT HOW TO REPLACE <br> tag with ' '
 				sec_list.append(str(td_tag.get_text(strip=True)))
 		return sec_list		
 		
@@ -68,6 +66,13 @@ def handle_mult(section_inf, next_list, fields):
 #<!-- Register of Actions --> sec_roa
 #<!-- Case History --> sec_casehist
 
+criminal_out = open("criminal_out.csv", 'ab')
+with criminal_out as csvfile:
+	writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+	writer.writerow(["Defendant", "Case Number", "Language", "Mailing Address", "Race", "Sex", "Height", "DOB", "Weight", "Hair", "Eyes", "Attorney", "Firm", "Attorney Phone", "Judge", 'Charges[(OffenseDate, DateClosed, OffenseDescription, Disposition, DispositionDate)]', "Fines", "Jail Days", "Probation", "Balance Due", "Bench Warrant Issued", str('Bonds[(DateIssued, Type, Amount, PostedDate)]'), 'Party History[(Case, Role, Status, FilingDate)]'])
+
+
+index_2 = 1
 #Define main parse HTML function
 def parse_gr(bsoup):
 	data_medium = bsoup.find_all(class_="medium")
@@ -81,7 +86,7 @@ def parse_gr(bsoup):
 	sec_defendant = regex_defendant.findall(str(bsoup))
 
 	
-	#chage_list fields ["OffenseDate1", "Date Closed1", "Offense Description"1, Disposition"1, "Disposition Date1", OffenseDate2..."]
+	#charge_list fields ["OffenseDate1", "Date Closed1", "Offense Description"1, Disposition"1, "Disposition Date1", OffenseDate2..."]
 	charge_list = []
 	regex_charges = re.compile(r'.*<!-- CHARGES -->(.*)<!-- SENTENCE -->.*', re.DOTALL)
 	sec_charges = regex_charges.findall(str(bsoup))
@@ -146,8 +151,6 @@ def parse_gr(bsoup):
 	########################################################################################
 	
 	
-
-	
 	#Write final values in known order	
 	with criminal_out as csvfile:
 		writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
@@ -169,6 +172,7 @@ def parse_gr(bsoup):
 
 #Check ascii encoding error
 #count = 303
+
 while count < 1100018:
 	print 'On Case #:', count
 	criminal_out = open("criminal_out.csv", 'ab')
