@@ -12,6 +12,9 @@ print "We are in the right spot"
 gr_url = 'http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1'
 nmax = 891429
 
+#Open Outfile:
+
+
 #High Count
 #Main while loop with Crawler calls parse_gr Choose a different page each run
 count = random.randint(1,100000)
@@ -146,11 +149,10 @@ def parse_gr(bsoup):
 
 	
 	#Write final values in known order	
-	with open("criminal_out.csv", 'a') as csvfile:
+	with criminal_out as csvfile:
 		writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
 		writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges, section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds, section_casehist])
 		# writer.writerow() write returned values from parse_gr
-		csvfile.close()
 		time.sleep(2.5)
 		
 	
@@ -169,7 +171,7 @@ def parse_gr(bsoup):
 #count = 303
 while count < 1100018:
 	print 'On Case #:', count
-
+	criminal_out = open("criminal_out.csv", 'ab')
 	#Request Page
 	f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=' + str(count))
 	soup = BeautifulSoup(f.read())
@@ -188,9 +190,11 @@ while count < 1100018:
 		print "Criminal Case"
 	
 	#Run Parser Function here
-		
+
 		parse_gr(soup)
 		count += 1
+		
+criminal_out.close()
 
 	
 
