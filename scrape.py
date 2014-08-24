@@ -15,7 +15,9 @@ nmax = 891429
 
 #High Count
 #Main while loop with Crawler calls parse_gr Choose a different page each run
-count = random.randint(1,100000)
+#count = random.randint(1,100000)
+count = 1
+
 
 #Get Cookie
 r = requests.get('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
@@ -57,6 +59,17 @@ def handle_mult(section_inf, next_list, fields):
 		s_index += fields
 		e_index += fields
 	return next_list
+
+def handle_mult(section_inf, next_list, fields):
+	numb = int(len(section_inf)/fields)
+	s_index = 0
+	e_index = fields
+	next_list = []
+	for case in range(numb):
+		next_list.append(tuple(section_inf[s_index:e_index]))
+		s_index += fields
+		e_index += fields
+	return next_list	
 
 #Regular Expressions for Splitting Page By Comments Storing Results in Variables:
 #<!-- DEFENDANT --> == sec_defendant
@@ -145,6 +158,15 @@ def parse_gr(bsoup):
 	section_casehist = handle_mult(section_casehist, [], 4)
 	print handle_mult(section_casehist, [], 4), '\n'
 		
+	# i = 0
+	# for x in section_casehist:
+		# zero = section_casehist[i][0]
+		# one = section_casehist[i][1]
+		# two = section_casehist[i][2]
+		# three = section_casehist[i][3]
+		
+		# zz += 1
+	
 	#Print Various Stuff From Soup:
 	########################################################################################
 	#for x in data_XLheader:
@@ -155,7 +177,7 @@ def parse_gr(bsoup):
 			# #print y.get_text(strip=True)
 			# print y.get_text
 	########################################################################################
-	
+
 	
 	#Write final values in known order	
 	with criminal_out as csvfile:
@@ -168,18 +190,13 @@ def parse_gr(bsoup):
 	
 	return def_list, charge_list
 
-
-	
-	
-
-
 #Double Charges case count test
 #count = 169698
 
 #Check ascii encoding error
 #count = 303
 
-while count < 1100018:
+while count < 30000:
 	print 'On Case #:', count
 	criminal_out = open("criminal_out.csv", 'ab')
 	#Request Page
@@ -195,7 +212,11 @@ while count < 1100018:
 		count +=1
 		print "ZZZZZZZ..."
 		time.sleep(2.5)
-					
+	elif data_ccsort.string == 'Unable to load case data':
+		print "Unable to load case data"
+		count +=1
+		print "ZZZZZZZ..."
+		time.sleep(2.5)
 	else:
 		print "Criminal Case"
 	
@@ -203,7 +224,7 @@ while count < 1100018:
 
 		parse_gr(soup)
 		count += 1
-		
+		print count
 criminal_out.close()
 
 	
