@@ -16,7 +16,7 @@ nmax = 891429
 #High Count
 #Main while loop with Crawler calls parse_gr Choose a different page each run
 #count = random.randint(1,100000)
-count = 1
+count = 169698
 
 
 #Get Cookie
@@ -179,14 +179,32 @@ def parse_gr(bsoup):
 	########################################################################################
 
 	
-	#Write final values in known order	
+	#Write final values in known order
 	with criminal_out as csvfile:
 		writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-		writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges, section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds, section_casehist])
-		# writer.writerow() write returned values from parse_gr
-		time.sleep(2.5)
 		
-	
+		#Is there more than once charge? Is there more than one bond? If more than one in both cases print.
+		if len(section_charges) > 1:
+			if len(section_bonds) < 1:
+				for entry in section_charges:
+					writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], entry[0], entry[1], entry[2], entry[3], entry[4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds])
+			else:
+				for entry in section_charges:
+					for bond in section_bonds:
+						writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], entry[0], entry[1], entry[2], entry[3], entry[4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], bond[0], bond[1], bond[2], bond[3]])
+		
+		#There is only one charge... is there 2 bonds?			
+		elif len(section_bonds) >= 1:
+			for entry in section_bonds:
+				writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], entry[0], entry[1], entry[2], entry[3]])
+		
+		#Zero bonds print empty list:
+		elif len(section_bonds) < 1:
+				writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds])
+		
+		#Only one charge, only one bond:
+		else:
+			writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds[0][0], section_bonds[0][1], section_bonds[0][2], section_bonds[0][3]])
 	
 	return def_list, charge_list
 
@@ -196,7 +214,7 @@ def parse_gr(bsoup):
 #Check ascii encoding error
 #count = 303
 
-while count < 30000:
+while count < 169700:
 	print 'On Case #:', count
 	criminal_out = open("criminal_out.csv", 'ab')
 	#Request Page
@@ -225,6 +243,7 @@ while count < 30000:
 		parse_gr(soup)
 		count += 1
 		print count
+		time.sleep(2.5)
 criminal_out.close()
 
 	
