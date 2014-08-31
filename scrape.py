@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import division
-import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random, string
+import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random, string, sys
 from bs4 import BeautifulSoup
 
 #Move to Work
@@ -16,7 +16,10 @@ nmax = 891429
 #High Count
 #Main while loop with Crawler calls parse_gr Choose a different page each run
 #count = random.randint(1,100000)
-count = 169698
+count = 42967
+
+#Multiple Bonds:
+#count = 42976 
 
 
 #Get Cookie
@@ -191,10 +194,16 @@ def parse_gr(bsoup):
 			else:
 				for entry in section_charges:
 					for bond in section_bonds:
+						print count, "I HAVE 2 BONDS and 2 CHARGES!"
+						sys.exit()
 						writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], entry[0], entry[1], entry[2], entry[3], entry[4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], bond[0], bond[1], bond[2], bond[3]])
 		
 		#There is only one charge... is there 2 bonds?			
-		elif len(section_bonds) >= 1:
+		elif len(section_bonds) > 1:
+			print count, "I have 2 bonds!"
+			print section_bonds
+			print len(section_bonds)
+			sys.exit()
 			for entry in section_bonds:
 				writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], entry[0], entry[1], entry[2], entry[3]])
 		
@@ -214,7 +223,7 @@ def parse_gr(bsoup):
 #Check ascii encoding error
 #count = 303
 
-while count < 169700:
+while count < 1000000:
 	print 'On Case #:', count
 	criminal_out = open("criminal_out.csv", 'ab')
 	#Request Page
