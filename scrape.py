@@ -85,7 +85,7 @@ def handle_mult(section_inf, next_list, fields):
 criminal_out = open("criminal_out.csv", 'ab')
 with criminal_out as csvfile:
 	writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-	writer.writerow(["Defendant", "Case Number", "Language", "Mailing Address", "Race", "Sex", "Height", "DOB", "Weight", "Hair", "Eyes", "Attorney", "Firm", "Attorney Phone", "Judge", 'Charges[(OffenseDate, DateClosed, OffenseDescription, Disposition, DispositionDate)]', "Fines", "Jail Days", "Probation", "Balance Due", "Bench Warrant Issued", str('Bonds[(DateIssued, Type, Amount, PostedDate)]'), 'Party History[(Case, Role, Status, FilingDate)]'])
+	writer.writerow(["Defendant", "Case Number", "Language", "Mailing Address", "Race", "Sex", "Height", "DOB", "Weight", "Hair", "Eyes", "Attorney", "Firm", "Attorney Phone", "Judge", "OffenseDate", "DateClosed", "OffenseDescription", "Disposition", "DispositionDate", "Fines", "Jail Days", "Probation", "Balance Due", "Bench Warrant Issued", "DateIssued", "Type", "Amount", "PostedDate"])
 
 
 index_2 = 1
@@ -193,7 +193,7 @@ def parse_gr(bsoup):
 				if len(section_bonds) < 1:
 					print "More than one charge, One Bond"
 					for entry in section_charges:
-						writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], entry[0], entry[1], entry[2], entry[3], entry[4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds])
+						writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], entry[0], entry[1], entry[2], entry[3], entry[4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds[0][0], section_bonds[0][1], section_bonds[0][2], section_bonds[0][3], section_bonds[0][4]])
 				else:
 					print "More than one charge, More than One Bond"
 					for entry in section_charges:
@@ -212,10 +212,10 @@ def parse_gr(bsoup):
 				for entry in section_bonds:
 					writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], entry[0], entry[1], entry[2], entry[3]])
 			
-			#Zero bonds print empty list:
+			#Zero bonds print empty columns:
 			elif len(section_bonds) < 1:
 					print "Zero bonds print"
-					writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds])
+					writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], "", "", "", "", ""])
 			
 			#Only one charge, only one bond:
 			else:
