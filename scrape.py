@@ -95,6 +95,7 @@ def parse_gr(bsoup):
 	data_XLheader = bsoup.find_all(class_="extralarge")
 	data_ccsort = soup.body.b
 	print data_ccsort.string
+	global problems
 	
 	#def_list fields ["Defendant", "Case Number", "Language", "Mailing Address", "Race", "Sex", "Height", "DOB", "Weight", "Hair", "Eyes", "Attorney", "Firm", "Attorney Phone", "Judge"]
 	def_list = []
@@ -181,7 +182,6 @@ def parse_gr(bsoup):
 			# print y.get_text
 	########################################################################################
 
-	problems = []
 	
 	#Write final values in known order
 	with criminal_out as csvfile:
@@ -191,9 +191,11 @@ def parse_gr(bsoup):
 			#Is there more than once charge? Is there more than one bond? If more than one in both cases print.
 			if len(section_charges) > 1:
 				if len(section_bonds) < 1:
+					print "More than one charge, One Bond"
 					for entry in section_charges:
 						writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], entry[0], entry[1], entry[2], entry[3], entry[4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds])
 				else:
+					print "More than one charge, More than One Bond"
 					for entry in section_charges:
 						for bond in section_bonds:
 							#print count, "I HAVE 2 BONDS and 2 CHARGES!"
@@ -206,20 +208,23 @@ def parse_gr(bsoup):
 				#print section_bonds
 				#print len(section_bonds)
 				#sys.exit()
+				print "I have more than one Bond"
 				for entry in section_bonds:
 					writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], entry[0], entry[1], entry[2], entry[3]])
 			
 			#Zero bonds print empty list:
 			elif len(section_bonds) < 1:
+					print "Zero bonds print"
 					writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds])
 			
 			#Only one charge, only one bond:
 			else:
+				print "Only one charge, only one bond"
 				writer.writerow([section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_charges[0][0], section_charges[0][1], section_charges[0][2], section_charges[0][3], section_charges[0][4], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3], section_sentence[4], section_bonds[0][0], section_bonds[0][1], section_bonds[0][2], section_bonds[0][3]])
 		except:
 			problems.append(count)
 			
-		print problems, "Problem child?"
+		
 	return def_list, charge_list
 
 #Double Charges case count test
@@ -234,7 +239,8 @@ while count < 1000000:
 	#Request Page
 	f = opener.open('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=' + str(count))
 	soup = BeautifulSoup(f.read())
-	
+	global problems
+	problems = []
 	#Storing the first b tag inside body to data_ccsort 
 	data_ccsort = soup.body.b
 	
@@ -258,6 +264,7 @@ while count < 1000000:
 		count += 1
 		print count
 		time.sleep(2.5)
+print problems, "Problem child?"
 criminal_out.close()
 
 	
