@@ -15,12 +15,11 @@ nmax = 891429
 
 #High Count
 #Main while loop with Crawler calls parse_gr Choose a different page each run
-#count = random.randint(1,100000)
-count = 43023
+count = random.randint(1,100000)
+#count = 43023
 
 #Multiple Bonds:
 #count = 42976 
-
 
 #Get Cookie
 r = requests.get('http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1')
