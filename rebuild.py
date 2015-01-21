@@ -1,8 +1,23 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import division
-import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random, string, sys
+import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random, string, sys, sqlite3
 from bs4 import BeautifulSoup
+
+conn = sqlite3.connect('example.db')
+c = conn.cursor()
+
+c.execute('DROP TABLE case, defendant, charges, sentence, bonds, roa') 
+
+c.execute('CREATE TABLE defendant (defendant_id integer primary key, Name text, Language text, Mailing_Address text, Race text, Sex text, Height text, DOB text, Weight text, Hair text, Eyes text')
+c.execute('CREATE TABLE case (Case_Number text, Attorney text, Firm text, Attorney_Phone text, Judge text, foreign key(defendant_id) REFERENCES defendant(defendant_id)')
+c.execute('CREATE TABLE charges (charges_id integer primary key, Case_Number text, Offense_Date text, Date_Closed text, Offense text, Description text, Disposition text, Disposition_Date, foreign key (Case_Number) REFERENCES case(Case_Number)')
+c.execute('CREATE TABLE sentence (sentence_id integer primary key, Case_Number text, Fines text, Jail_Days text, Probation text, Balance_Due text, foreign key (Case_Number) REFERENCES case(Case_Number))')
+c.execute('CREATE TABLE bonds (bonds_id integer primary key, Case_Number text, Date_Issued text, Type text, Amount text, Posted_Date text, foreign key (Case_Number) REFERENCES case(Case_Number)')
+c.execute('CREATE TABLE roa (Date_Issued text, Action text, Judge text, foreign key (Case_Number) REFERENCES case(Case_Number)')
+
+conn.commit()
+
 
 print "We are in the right spot"
 os.system("del criminal_out.csv")
@@ -101,6 +116,7 @@ while count < 100000:
 		str_def = str(section_defendant[3]).replace('\n', ' ')
 		section_defendant[3] = ' '.join(str_def.split())
 		print section_defendant, '\n'
+		section_defendant
 		
 		print "TUPLE ---- **********CHARGES******************** ---- TUPLE"
 		charge_list = []
@@ -145,11 +161,19 @@ while count < 100000:
 		section_casehist = handle_mult(section_casehist, [], 4)
 		print section_casehist, '\n'
 		
-		with criminal_out as csvfile:
-			writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-			try: 
-				
+		# with criminal_out as csvfile:
+			# writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+			# try: 
 		
+		# run select defendant_id from defendant based on Defendant name, addr, dob
+		# store id in a variable
+		# if id var not > 0
+		# insert into
+		# get the id from insert and store in id variable
+		c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?)')
+		id = c.commit();
+		
+		c.executemany('INSERT INTO charges VALUES (?,?,?,?)
 		
 		
 		
