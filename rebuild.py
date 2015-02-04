@@ -175,12 +175,14 @@ while count < 100000:
 		# if id var not > 0
 		# insert into
 		# get the id from insert and store in id variable
-		c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?)')
-		id = c.commit();
+		c.execute('SELECT defendant_id from defendant WHERE Full_Name = ? AND Mailing_Address = ? AND DOB = ?',
+			('foo', 'bar', 'x'))
+		id = c.fetchone()
+		if not id > 0:
+			#c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?)')
+			#id = c.lastrowid
 		
-		c.executemany('INSERT INTO charges VALUES (?,?,?,?)
-		
-		
+		#c.executemany('INSERT INTO charges VALUES (?,?,?,?)', section_charges)
 		
 		count += 1
 		print count
