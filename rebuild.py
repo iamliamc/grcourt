@@ -7,14 +7,19 @@ from bs4 import BeautifulSoup
 conn = sqlite3.connect('example.db')
 c = conn.cursor()
 
-c.execute('DROP TABLE case, defendant, charges, sentence, bonds, roa') 
+c.execute('DROP TABLE IF EXISTS defendant')
+c.execute('DROP TABLE IF EXISTS court_case')
+c.execute('DROP TABLE IF EXISTS charges')
+c.execute('DROP TABLE IF EXISTS sentence')
+c.execute('DROP TABLE IF EXISTS bonds')
+c.execute('DROP TABLE IF EXISTS roa')
 
-c.execute('CREATE TABLE defendant (defendant_id integer primary key, Name text, Language text, Mailing_Address text, Race text, Sex text, Height text, DOB text, Weight text, Hair text, Eyes text')
-c.execute('CREATE TABLE case (Case_Number text, Attorney text, Firm text, Attorney_Phone text, Judge text, foreign key(defendant_id) REFERENCES defendant(defendant_id)')
-c.execute('CREATE TABLE charges (charges_id integer primary key, Case_Number text, Offense_Date text, Date_Closed text, Offense text, Description text, Disposition text, Disposition_Date, foreign key (Case_Number) REFERENCES case(Case_Number)')
-c.execute('CREATE TABLE sentence (sentence_id integer primary key, Case_Number text, Fines text, Jail_Days text, Probation text, Balance_Due text, foreign key (Case_Number) REFERENCES case(Case_Number))')
-c.execute('CREATE TABLE bonds (bonds_id integer primary key, Case_Number text, Date_Issued text, Type text, Amount text, Posted_Date text, foreign key (Case_Number) REFERENCES case(Case_Number)')
-c.execute('CREATE TABLE roa (Date_Issued text, Action text, Judge text, foreign key (Case_Number) REFERENCES case(Case_Number)')
+c.execute('CREATE TABLE defendant (defendant_id integer primary key, Full_Name text, Language text, Mailing_Address text, Race text, Sex text, Height text, DOB text, Weight text, Hair text, Eyes text)')
+c.execute('CREATE TABLE court_case (Case_Number text, Attorney text, Firm text, Attorney_Phone text, Judge text, defendant_id integer, foreign key(defendant_id) REFERENCES defendant(defendant_id))')
+c.execute('CREATE TABLE charges (charges_id integer primary key, Case_Number text, Offense_Date text, Date_Closed text, Offense text, Description text, Disposition text, Disposition_Date, foreign key (Case_Number) REFERENCES court_case(Case_Number))')
+c.execute('CREATE TABLE sentence (sentence_id integer primary key, Case_Number text, Fines text, Jail_Days text, Probation text, Balance_Due text, foreign key (Case_Number) REFERENCES court_case(Case_Number))')
+c.execute('CREATE TABLE bonds (bonds_id integer primary key, Case_Number text, Date_Issued text, Type text, Amount text, Posted_Date text, foreign key (Case_Number) REFERENCES court_case(Case_Number))')
+c.execute('CREATE TABLE roa (Date_Issued text, Action text, Judge text, Case_Number text, foreign key (Case_Number) REFERENCES court_case(Case_Number))')
 
 conn.commit()
 
