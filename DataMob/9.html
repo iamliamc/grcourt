@@ -1,0 +1,1655 @@
+<html><head>
+
+      <title>61st District Court Payments - Grand Rapids, Michigan</title>
+      
+      <link href="style/layout.css" rel="stylesheet" type="text/css"/>
+      <link href="style/style.css" rel="stylesheet" type="text/css"/>
+      <link href="style/print.css" media="print" rel="stylesheet" type="text/css"/>
+ 
+   <script language="javascript"><!--
+   function numbersonly(myfield, e, dec)
+      {
+      var key;
+      var keychar;
+
+      if (window.event)
+         key = window.event.keyCode;
+      else if (e)
+         key = e.which;
+      else
+         return true;
+      keychar = String.fromCharCode(key);
+   
+      // control keys
+      if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27) )
+         return true;
+      // numbers
+      else if ((("0123456789").indexOf(keychar) > -1))
+         return true;
+      // decimal point jump
+      else if (dec && (keychar == "."))
+         {
+         //myfield.form.elements[dec].focus();
+         //return false;
+         return true;
+         }
+      else
+         return false;
+      } // function numbersonly(myfield, e, dec)
+      
+   function currencyFormat(fld, milSep, decSep, e) 
+      {
+      var sep = 0;
+      var key = '';
+      var i = j = 0;
+      var len = len2 = 0;
+      var strCheck = '0123456789';
+      var aux = aux2 = '';
+      var whichCode = (window.Event) ? e.which : e.keyCode;
+
+      if (whichCode == 13) 
+         return true;  // Enter
+      if (whichCode == 8) 
+         return true;  // Delete
+      if (whichCode == 9) 
+         return true;  // Tab
+      key = String.fromCharCode(whichCode);  // Get key value from key code
+      if (strCheck.indexOf(key) == -1) 
+         return false;  // Not a valid key
+      len = fld.value.length;
+      for(i = 0; i < len; i++)
+         if ((fld.value.charAt(i) != '0') && (fld.value.charAt(i) != decSep)) 
+            break;
+      aux = '';
+      for(; i < len; i++)
+         if (strCheck.indexOf(fld.value.charAt(i))!=-1) aux += fld.value.charAt(i);
+            aux += key;
+      len = aux.length;
+      if (len == 0) 
+         fld.value = '';
+      if (len == 1) 
+         fld.value = '0'+ decSep + '0' + aux;
+      if (len == 2) 
+         fld.value = '0'+ decSep + aux;
+      if (len > 2) 
+         {
+         aux2 = '';
+         for (j = 0, i = len - 3; i >= 0; i--) 
+            {
+            if (j == 3) 
+               {
+               aux2 += milSep;
+               j = 0;
+               }
+            aux2 += aux.charAt(i);
+            j++;
+            }
+         fld.value = '';
+         len2 = aux2.length;
+         for (i = len2 - 1; i >= 0; i--)
+            fld.value += aux2.charAt(i);
+         fld.value += decSep + aux.substr(len - 2, len);
+         }
+      return false;
+      }
+   
+   function toggle(id)
+      {
+      if (document.all)
+         {
+         if(document.all[id].style.display == 'none')
+            {
+            document.all[id].style.display = '';
+            } 
+         else 
+            {
+            document.all[id].style.display = 'none';
+            }
+         return false;
+         } 
+      else if (document.getElementById)
+         {
+         if(document.getElementById(id).style.display == 'none')
+            {
+            document.getElementById(id).style.display = 'block';
+            } 
+         else 
+            {
+            document.getElementById(id).style.display = 'none';
+            }
+         return false;
+         }
+      } // function toggle(id)
+      
+   function advance(currentField,nextField, len, form) 
+      {
+      if (currentField.value.length == len)
+         form[nextField].focus();
+      }
+   --></script></head>
+   
+   
+   
+   <body>
+
+      <div id="page-holder">
+
+         <img alt="" height="50" src="images/1px.gif" width="1px"/>
+
+
+         <div id="header-blu">
+            <span>61st District Court - Grand Rapids, Michigan</span>
+         </div>
+         <!-- END Header -->
+
+
+         <div id="main">
+
+
+            <!-- END Navigation -->
+            <div class="seal" id="content" style="left:0px; width:740px;">
+               <div id="content-pad">
+               
+                  
+                  
+
+
+
+
+
+<center>
+   <form action="./loadCheckout.do?caseSequence=9" method="post" name="mainform">
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Court Records Search</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#FFFFFF">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3">
+                     <td class="medium" colspan="99">
+                        <b>Criminal Case View</b>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <!-- DEFENDANT -->
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Defendant</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="40%">
+                        <strong>Defendant</strong>
+                     </td>
+                     <td width="40%">
+                        <strong>Case Number</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Language</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" bordercolor="#F3F3F3" class="medium">
+                     <td>
+                        Abdullah, Jabari Jibri
+                     </td>
+                     <td>
+                        1998-CI-0718718
+                     </td>
+                     <td>
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="50%">
+                        <strong>Mailing address</strong>
+                     </td>
+                     <td width="30%">
+                        <strong>Race</strong>
+                     </td>
+                     <td width="10%">
+                        <strong>Sex</strong>
+                     </td>
+                     <td width="10%">
+                        <strong>Height</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td width="50%">
+                        1147 Fuller Ave SE 
+                        <br/>
+                        Grand Rapids
+                        ,
+                        MI
+                        49507
+                     </td>
+                     <td width="30%">
+                        Black
+                     </td>
+                     <td width="10%">
+                        M
+                     </td>
+                     <td width="10%">
+                        509
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="40%">
+                        <strong>DOB</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Weight</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Hair</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Eyes</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        07/23/1981
+                     </td>
+                     <td>
+                        200
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        Brown
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="25%">
+                        <strong>Attorney</strong>
+                     </td>
+                     <td bgcolor="#F3F3F3" width="25%">
+                        <strong>Firm</strong>
+                     </td>
+                     <td width="25%">
+                        <strong>Attorney Phone</strong>
+                     </td>
+                     <td width="25%">
+                        <strong>Judge</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        No Judge
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <!-- CHARGES -->
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Charges</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Offense Date</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Date Closed</strong> 
+                     </td>
+                     <td align="left">
+                        <strong>Offense Description</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Disposition</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Disposition Date</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        09/08/1998
+                     </td>
+                     <td>
+                        09/25/1998
+                     </td>
+                     <td>
+                        Seat belt law violation by driver
+                     </td>
+                     <td>
+                        Responsible by Default
+                     </td>
+                     <td>
+                        09/25/1998
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+
+      <!-- SENTENCE -->
+
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Sentence</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Fines</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Jail Days</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Probation</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Balance Due</strong>
+                     </td>
+                     <td align="left">
+                        <strong></strong>
+                     </td>
+                  </tr>
+
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        $
+                        119.00
+                     </td>
+                     <td align="left">
+                        0
+                     </td>
+                     <td align="left">
+                        N
+                     </td>
+                     <td align="left">
+                        $
+                        0.00
+                     </td>
+                     <td align="left">
+                        
+                     </td>
+                  </tr>
+                  <tr bgcolor="#F3F3F3" class="large">
+                     <td align="left" colspan="5">
+                        <strong>Bench Warrant Issued</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left" colspan="4">
+                        N
+                     </td>
+                     <td align="right">
+                        
+                         
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      
+
+      <!-- BONDS -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Bonds</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Date Issued</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Type</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Amount</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Posted Date</strong>
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <!-- Register of Actions -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>ROA</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left" width="15%">
+                        <strong>Date</strong>
+                     </td>
+                     <td align="left" width="64%">
+                         
+                     </td>
+                     <td align="left" width="21%">
+                        <strong>Judge</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        09/08/1998
+                     </td>
+                     <td align="left">
+                        New Case Filed
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        09/25/1998
+                     </td>
+                     <td align="left">
+                        Responsible by Default (3290 Violation of seat belt law by driver)
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        09/25/1998
+                     </td>
+                     <td align="left">
+                        Case Adjudicated
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/29/1998
+                     </td>
+                     <td align="left">
+                        14 Day Notice Issued &amp; Sent
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        12/18/1998
+                     </td>
+                     <td align="left">
+                        SOS notified to suspend driving privileges FCJ/FAC
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        06/18/1999
+                     </td>
+                     <td align="left">
+                        Referred to LCE
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        06/15/2001
+                     </td>
+                     <td align="left">
+                        Case status changed:  closed
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <!-- Case History -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Party History</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Case</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Role</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Status</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Filing Date</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=903062">2014-OM-0002763 </a>
+                     </td>
+                     <td align="left">
+                        Assault and Battery
+                     </td>
+                     <td align="left">
+                        Reopened Pre-Adjudication
+                     </td>
+                     <td align="left">
+                        11/20/2014
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=886757">2014-ON-0570071 </a>
+                     </td>
+                     <td align="left">
+                        Violation Charter Para. 292/Use-Poss Mj.
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        07/10/2014
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=750096">2011-SM-0002206 </a>
+                     </td>
+                     <td align="left">
+                        Possession of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/26/2011
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=487048">2007-FY-0000125 </a>
+                     </td>
+                     <td align="left">
+                        Sex offender-fail to comply w/reporting 3rd or sub off
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        01/26/2007
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=487048">2007-FY-0000125 </a>
+                     </td>
+                     <td align="left">
+                        SEX OFFENDERS - FAILURE TO REGISTER
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        01/26/2007
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=487048">2007-FY-0000125 </a>
+                     </td>
+                     <td align="left">
+                        Supp 4
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        01/26/2007
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=453066">2006-FY-0001342 </a>
+                     </td>
+                     <td align="left">
+                        Reckless Driving
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/15/2006
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=453066">2006-FY-0001342 </a>
+                     </td>
+                     <td align="left">
+                        MDOP Prop O/1000 - U/20000
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/15/2006
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=453066">2006-FY-0001342 </a>
+                     </td>
+                     <td align="left">
+                        Assault
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/15/2006
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=453066">2006-FY-0001342 </a>
+                     </td>
+                     <td align="left">
+                        Assault
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/15/2006
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=453066">2006-FY-0001342 </a>
+                     </td>
+                     <td align="left">
+                        Supp 4
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/15/2006
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=440206">2006-ST-0000522 </a>
+                     </td>
+                     <td align="left">
+                        Drove While Suspended,Revoked,Denied
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        03/21/2006
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=375702">2005-SM-0000077 </a>
+                     </td>
+                     <td align="left">
+                        Possession of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        01/20/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=424483">2005-ST-0002001 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        12/06/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=399361">2005-ST-0001103 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/22/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=424482">2005-OT-0005776 </a>
+                     </td>
+                     <td align="left">
+                        False Information to a Police Officer(Traffic)
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        12/06/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=394639">2005-SM-0000938 </a>
+                     </td>
+                     <td align="left">
+                        Use of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        05/26/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=391272">2005-SM-0000752 </a>
+                     </td>
+                     <td align="left">
+                        Fail to Verify Address - Sex Offender
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        05/02/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=424480">2005-OI-1821902 </a>
+                     </td>
+                     <td align="left">
+                        Disregarded Stop and Go Light
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        12/06/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=375155">2005-ST-0000117 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        01/18/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=423430">2005-OI-1792332 </a>
+                     </td>
+                     <td align="left">
+                        Seat belt law violation by driver
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/30/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=423431">2005-ST-0001960 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/30/2005
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=341881">2004-OT-0003055 </a>
+                     </td>
+                     <td align="left">
+                        False Information to a Police Officer(Traffic)
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/17/2004
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=346047">2004-FY-0001354 </a>
+                     </td>
+                     <td align="left">
+                        Fail to Verify Address - Sex Offender
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        07/12/2004
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=316614">2004-ST-0000195 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        01/30/2004
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=341882">2004-ST-0000906 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/17/2004
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=346047">2004-FY-0001354 </a>
+                     </td>
+                     <td align="left">
+                        Supp 4
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        07/12/2004
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=341880">2004-OI-1374182 </a>
+                     </td>
+                     <td align="left">
+                        Expired Registration Plate
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/17/2004
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=253775">2003-ST-0000375 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        03/03/2003
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=253842">2003-SI-6441702 </a>
+                     </td>
+                     <td align="left">
+                        Speeding (Limited access)
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        03/03/2003
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=298540">2003-ST-0002099 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/13/2003
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=298540">2003-ST-0002099 </a>
+                     </td>
+                     <td align="left">
+                        Contempt of Court
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/13/2003
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=261807">2003-ST-0000806 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        04/11/2003
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=183830">2002-OT-0001752 </a>
+                     </td>
+                     <td align="left">
+                        Drove while Unlicensed / License Not Valid
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        02/28/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=183716">2002-OI-0459663 </a>
+                     </td>
+                     <td align="left">
+                        No Proof of Insurance
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        02/28/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=201679">2002-OI-0065332 </a>
+                     </td>
+                     <td align="left">
+                        Seatbelt law violation by passenger: 16yrs/up
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/04/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=217433">2002-ST-0001483 </a>
+                     </td>
+                     <td align="left">
+                        Drove While Suspended,Revoked,Denied
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/21/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=217433">2002-ST-0001483 </a>
+                     </td>
+                     <td align="left">
+                        Contempt of Court
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/21/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=183713">2002-OI-0459662 </a>
+                     </td>
+                     <td align="left">
+                        Improper Signal/ Fail to signal stop or turn
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        02/28/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=116451">2001-OI-5995702 </a>
+                     </td>
+                     <td align="left">
+                        Equipment-Defective or Missing
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        04/12/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=116674">2001-CT-0001837 </a>
+                     </td>
+                     <td align="left">
+                        Drove while Unlicensed / License Not Valid
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        04/12/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=149226">2001-FY-0001513 </a>
+                     </td>
+                     <td align="left">
+                        Delivery/Manufacture Narcotic/Cocaine Less than 50 gm
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/08/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=149226">2001-FY-0001513 </a>
+                     </td>
+                     <td align="left">
+                        Supp 3
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/08/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=149226">2001-FY-0001513 </a>
+                     </td>
+                     <td align="left">
+                        2nd Offense Drug Supp
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/08/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=116593">2001-SM-0000779 </a>
+                     </td>
+                     <td align="left">
+                        Possession of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        04/12/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=137705">2001-CT-0002921 </a>
+                     </td>
+                     <td align="left">
+                        Registration plate violation-Improper/invalid/none
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        07/09/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=137705">2001-CT-0002921 </a>
+                     </td>
+                     <td align="left">
+                        Drove while Unlicensed / License Not Valid
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        07/09/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=47723">2000-CT-8309381 </a>
+                     </td>
+                     <td align="left">
+                        Speeding (non limited access)
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        05/01/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=47725">2000-OI-8309383 </a>
+                     </td>
+                     <td align="left">
+                        No Proof of Insurance
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        05/01/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=59003">2000-ST-0002164 </a>
+                     </td>
+                     <td align="left">
+                        DWLS, 2nd
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/27/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=49253">2000-CT-0002680 </a>
+                     </td>
+                     <td align="left">
+                        Drove while Unlicensed / License Not Valid
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        05/09/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=58401">2000-CM-0002266 </a>
+                     </td>
+                     <td align="left">
+                        Fail to Stop on Police Command
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/23/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=66106">2000-CM-0002977 </a>
+                     </td>
+                     <td align="left">
+                        False Information to Police Officer
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/04/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=85509">2000-SM-0002676 </a>
+                     </td>
+                     <td align="left">
+                        Domestic Violence
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/15/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=58401">2000-CM-0002266 </a>
+                     </td>
+                     <td align="left">
+                        Trespassing
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/23/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=59038">2000-CT-0003222 </a>
+                     </td>
+                     <td align="left">
+                        Registration plate violation-Improper/invalid/none
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/27/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=7823">1999-ST-0001252 </a>
+                     </td>
+                     <td align="left">
+                        Drove while Unlicensed / License Not Valid
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/09/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=7838">1999-FY-0002022 </a>
+                     </td>
+                     <td align="left">
+                        CSC 3RD
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/09/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=7838">1999-FY-0002022 </a>
+                     </td>
+                     <td align="left">
+                        Supp 2
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/09/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=7862">1999-CT-0004773 </a>
+                     </td>
+                     <td align="left">
+                        False Information to Police Officer
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/09/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=14979">1999-CT-0002781 </a>
+                     </td>
+                     <td align="left">
+                        Reckless Driving
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/15/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=12663">1999-CT-0001341 </a>
+                     </td>
+                     <td align="left">
+                        Open Alcohol in Motor Vehicle
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        03/14/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=14979">1999-CT-0002781 </a>
+                     </td>
+                     <td align="left">
+                        No Ops Never Applied
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/15/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=9">1998-CI-0718718 </a>
+                     </td>
+                     <td align="left">
+                        Seat belt law violation by driver
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        09/08/1998
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <br/>
+      <br/>
+      <a href="./newSearch.do?action=">New Search</a>
+   </form>
+</center>
+
+
+               </div>
+               <!-- END content padding -->
+            </div>
+            <!-- END content -->
+         </div>
+         <!-- END Main -->
+
+         <div id="footer">
+   <span> 180 Ottawa NW, Grand Rapids MI 49503
+    - Phone: 616.632.5700 - Fax: 616.632.5592</span>
+         </div>
+
+         <!-- END Footer -->
+
+         <img alt="" height="50" src="images/1px.gif" width="50px"/>
+
+      </div>
+      <!-- END Page Holder -->
+
+   
+
+
+</body></html>

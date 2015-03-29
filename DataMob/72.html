@@ -1,0 +1,1301 @@
+<html><head>
+
+      <title>61st District Court Payments - Grand Rapids, Michigan</title>
+      
+      <link href="style/layout.css" rel="stylesheet" type="text/css"/>
+      <link href="style/style.css" rel="stylesheet" type="text/css"/>
+      <link href="style/print.css" media="print" rel="stylesheet" type="text/css"/>
+ 
+   <script language="javascript"><!--
+   function numbersonly(myfield, e, dec)
+      {
+      var key;
+      var keychar;
+
+      if (window.event)
+         key = window.event.keyCode;
+      else if (e)
+         key = e.which;
+      else
+         return true;
+      keychar = String.fromCharCode(key);
+   
+      // control keys
+      if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27) )
+         return true;
+      // numbers
+      else if ((("0123456789").indexOf(keychar) > -1))
+         return true;
+      // decimal point jump
+      else if (dec && (keychar == "."))
+         {
+         //myfield.form.elements[dec].focus();
+         //return false;
+         return true;
+         }
+      else
+         return false;
+      } // function numbersonly(myfield, e, dec)
+      
+   function currencyFormat(fld, milSep, decSep, e) 
+      {
+      var sep = 0;
+      var key = '';
+      var i = j = 0;
+      var len = len2 = 0;
+      var strCheck = '0123456789';
+      var aux = aux2 = '';
+      var whichCode = (window.Event) ? e.which : e.keyCode;
+
+      if (whichCode == 13) 
+         return true;  // Enter
+      if (whichCode == 8) 
+         return true;  // Delete
+      if (whichCode == 9) 
+         return true;  // Tab
+      key = String.fromCharCode(whichCode);  // Get key value from key code
+      if (strCheck.indexOf(key) == -1) 
+         return false;  // Not a valid key
+      len = fld.value.length;
+      for(i = 0; i < len; i++)
+         if ((fld.value.charAt(i) != '0') && (fld.value.charAt(i) != decSep)) 
+            break;
+      aux = '';
+      for(; i < len; i++)
+         if (strCheck.indexOf(fld.value.charAt(i))!=-1) aux += fld.value.charAt(i);
+            aux += key;
+      len = aux.length;
+      if (len == 0) 
+         fld.value = '';
+      if (len == 1) 
+         fld.value = '0'+ decSep + '0' + aux;
+      if (len == 2) 
+         fld.value = '0'+ decSep + aux;
+      if (len > 2) 
+         {
+         aux2 = '';
+         for (j = 0, i = len - 3; i >= 0; i--) 
+            {
+            if (j == 3) 
+               {
+               aux2 += milSep;
+               j = 0;
+               }
+            aux2 += aux.charAt(i);
+            j++;
+            }
+         fld.value = '';
+         len2 = aux2.length;
+         for (i = len2 - 1; i >= 0; i--)
+            fld.value += aux2.charAt(i);
+         fld.value += decSep + aux.substr(len - 2, len);
+         }
+      return false;
+      }
+   
+   function toggle(id)
+      {
+      if (document.all)
+         {
+         if(document.all[id].style.display == 'none')
+            {
+            document.all[id].style.display = '';
+            } 
+         else 
+            {
+            document.all[id].style.display = 'none';
+            }
+         return false;
+         } 
+      else if (document.getElementById)
+         {
+         if(document.getElementById(id).style.display == 'none')
+            {
+            document.getElementById(id).style.display = 'block';
+            } 
+         else 
+            {
+            document.getElementById(id).style.display = 'none';
+            }
+         return false;
+         }
+      } // function toggle(id)
+      
+   function advance(currentField,nextField, len, form) 
+      {
+      if (currentField.value.length == len)
+         form[nextField].focus();
+      }
+   --></script></head>
+   
+   
+   
+   <body>
+
+      <div id="page-holder">
+
+         <img alt="" height="50" src="images/1px.gif" width="1px"/>
+
+
+         <div id="header-blu">
+            <span>61st District Court - Grand Rapids, Michigan</span>
+         </div>
+         <!-- END Header -->
+
+
+         <div id="main">
+
+
+            <!-- END Navigation -->
+            <div class="seal" id="content" style="left:0px; width:740px;">
+               <div id="content-pad">
+               
+                  
+                  
+
+
+
+
+
+<center>
+   <form action="./loadCheckout.do?caseSequence=72" method="post" name="mainform">
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Court Records Search</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#FFFFFF">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3">
+                     <td class="medium" colspan="99">
+                        <b>Criminal Case View</b>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <!-- DEFENDANT -->
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Defendant</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="40%">
+                        <strong>Defendant</strong>
+                     </td>
+                     <td width="40%">
+                        <strong>Case Number</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Language</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" bordercolor="#F3F3F3" class="medium">
+                     <td>
+                        Mitchell, Oscar Clarence III
+                     </td>
+                     <td>
+                        1999-SM-0001855
+                     </td>
+                     <td>
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="50%">
+                        <strong>Mailing address</strong>
+                     </td>
+                     <td width="30%">
+                        <strong>Race</strong>
+                     </td>
+                     <td width="10%">
+                        <strong>Sex</strong>
+                     </td>
+                     <td width="10%">
+                        <strong>Height</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td width="50%">
+                        1038 Cass Ave SE
+                        <br/>
+                        Grand Rapids
+                        ,
+                        MI
+                        49507
+                     </td>
+                     <td width="30%">
+                        Black
+                     </td>
+                     <td width="10%">
+                        M
+                     </td>
+                     <td width="10%">
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="40%">
+                        <strong>DOB</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Weight</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Hair</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Eyes</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        06/24/1980
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="25%">
+                        <strong>Attorney</strong>
+                     </td>
+                     <td bgcolor="#F3F3F3" width="25%">
+                        <strong>Firm</strong>
+                     </td>
+                     <td width="25%">
+                        <strong>Attorney Phone</strong>
+                     </td>
+                     <td width="25%">
+                        <strong>Judge</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        Joseph F Tevlin
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        6166441326
+                     </td>
+                     <td>
+                        Michael Christensen
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <!-- CHARGES -->
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Charges</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Offense Date</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Date Closed</strong> 
+                     </td>
+                     <td align="left">
+                        <strong>Offense Description</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Disposition</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Disposition Date</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        10/07/1999
+                     </td>
+                     <td>
+                        05/19/2000
+                     </td>
+                     <td>
+                        Possession of Marijuana
+                     </td>
+                     <td>
+                        Diversion-7411
+                     </td>
+                     <td>
+                        04/20/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        11/08/2000
+                     </td>
+                     <td>
+                        11/08/2000
+                     </td>
+                     <td>
+                        Probation Violation
+                     </td>
+                     <td>
+                        Guilty
+                     </td>
+                     <td>
+                        11/08/2000
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+
+      <!-- SENTENCE -->
+
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Sentence</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Fines</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Jail Days</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Probation</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Balance Due</strong>
+                     </td>
+                     <td align="left">
+                        <strong></strong>
+                     </td>
+                  </tr>
+
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        $
+                        250.00
+                     </td>
+                     <td align="left">
+                        20
+                     </td>
+                     <td align="left">
+                        Y
+                     </td>
+                     <td align="left">
+                        $
+                        0.00
+                     </td>
+                     <td align="left">
+                        
+                     </td>
+                  </tr>
+                  <tr bgcolor="#F3F3F3" class="large">
+                     <td align="left" colspan="5">
+                        <strong>Bench Warrant Issued</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left" colspan="4">
+                        N
+                     </td>
+                     <td align="right">
+                        
+                         
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      
+
+      <!-- BONDS -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Bonds</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Date Issued</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Type</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Amount</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Posted Date</strong>
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <!-- Register of Actions -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>ROA</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left" width="15%">
+                        <strong>Date</strong>
+                     </td>
+                     <td align="left" width="64%">
+                         
+                     </td>
+                     <td align="left" width="21%">
+                        <strong>Judge</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                     <td align="left">
+                        New Case Filed
+                     </td>
+                     <td align="left">
+                        Michael Christensen
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                     <td align="left">
+                        Arrest Warrant Issued
+                     </td>
+                     <td align="left">
+                        Michael Christensen
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                     <td align="left">
+                        Warrant Served
+                     </td>
+                     <td align="left">
+                        Michael Christensen
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Arraignment  10/15/1999 08:30 AM)
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/15/1999
+                     </td>
+                     <td align="left">
+                        Hearing result for Arraignment held on 10/15/1999 08:30 AM:   Not Guilty Plea
+                     </td>
+                     <td align="left">
+                        Fred D. Hartley
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/15/1999
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Pretrial Conference  11/15/1999 10:00 AM)
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        11/16/1999
+                     </td>
+                     <td align="left">
+                        Hearing result for Pretrial Conference held on 11/15/1999 10:00 AM:   Failed to Appear
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        01/04/2000
+                     </td>
+                     <td align="left">
+                        OTSC Sent -  Failure to Appear - Charge # 1, Possession of Marijuana
+                     </td>
+                     <td align="left">
+                        
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        01/27/2000
+                     </td>
+                     <td align="left">
+                        Adjourned  (OTSC  01/27/2000 08:30 AM)
+                     </td>
+                     <td align="left">
+                        Fred D. Hartley
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        01/27/2000
+                     </td>
+                     <td align="left">
+                        Hearing result for OTSC held on 01/27/2000 08:30 AM:   Not Guilty Plea.  Dismiss BW +25.  Sch new P.T.C.
+                     </td>
+                     <td align="left">
+                        Fred D. Hartley
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        02/04/2000
+                     </td>
+                     <td align="left">
+                        Court Appointed Attorney Public defender Joseph Tevlin
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        02/04/2000
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Pretrial Conference  02/18/2000 11:00 AM)
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        02/04/2000
+                     </td>
+                     <td align="left">
+                         Notice To Appear Issued and Sent 
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        02/04/2000
+                     </td>
+                     <td align="left">
+                         Notice To Appear Issued and Sent 
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        02/23/2000
+                     </td>
+                     <td align="left">
+                        Hearing result for Pretrial Conference held on 02/18/2000 11:00 AM:   PTC Held,Set Sett PTC
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        02/23/2000
+                     </td>
+                     <td align="left">
+                        Offer:  A/C; no obj to 7411 -- if no 7411, USE MJ.  (TMD/MMG)
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        03/10/2000
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Settlement Conference  04/20/2000 10:00 AM)
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        03/10/2000
+                     </td>
+                     <td align="left">
+                         Notice To Appear Issued and Sent 
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        04/20/2000
+                     </td>
+                     <td align="left">
+                        Hearing result for Settlement Conference held on 04/20/2000 10:00 AM:   Guilty Plea.  Refer to PSI
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        04/26/2000
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Sentencing  05/19/2000 09:00 AM)
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        04/28/2000
+                     </td>
+                     <td align="left">
+                        Petition for consideration u/7411 filed
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        05/19/2000
+                     </td>
+                     <td align="left">
+                        Hearing result for Sentencing held on 05/19/2000 09:00 AM:   Sentencing Held
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        07/19/2000
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Probation OTSC  08/10/2000 10:45 AM)
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        07/19/2000
+                     </td>
+                     <td align="left">
+                          Hearing set for 08/10/2000 at 10:45 AM Copy of Petition and Order Probation Violation mailed to defendant 
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        08/11/2000
+                     </td>
+                     <td align="left">
+                        Not Guilty to Probation Violation.  Set Hearing.  Appoint Tevlin as Attorney.
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        08/17/2000
+                     </td>
+                     <td align="left">
+                        OTSC Sent -  Failure to Pay Fines and Fees - Charge # 1, Possession of Marijuana
+                     </td>
+                     <td align="left">
+                        
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        08/24/2000
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Probation Hearing  09/07/2000 01:30 PM)
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        08/24/2000
+                     </td>
+                     <td align="left">
+                         Notice To Appear Issued and Sent 
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        09/07/2000
+                     </td>
+                     <td align="left">
+                        Hearing result for Probation Hearing held on 09/07/2000 01:30 PM:   Admits to probation violation.  Probation continued; 7411 revoked.  License susp. 180 days.  $100 atty fees assessed.  80 hrs. WC ordered.
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        09/08/2000
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Review  12/28/2000 09:00 AM)
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        09/11/2000
+                     </td>
+                     <td align="left">
+                        Atty bill submitted, payment of $100.00 paid to J. Tevlin on 9/11/00.  
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/19/2000
+                     </td>
+                     <td align="left">
+                        Hearing Scheduled  (Probation OTSC  11/08/2000 10:45 AM)
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/19/2000
+                     </td>
+                     <td align="left">
+                          Hearing set for 11/08/2000 at 10:45 AM Copy of Petition and Order Probation Violation mailed to defendant 
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        11/08/2000
+                     </td>
+                     <td align="left">
+                        Hearing result for Probation OTSC held on 11/08/2000 10:45 AM:   Admits to violation.  Ordered to serve 20 days jail;  Pay $615 or serve 20 additional days;  PROBATION REVOKED.
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        11/08/2000
+                     </td>
+                     <td align="left">
+                         Petition and Order for Revocation has been issued. 
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        11/08/2000
+                     </td>
+                     <td align="left">
+                        Dft. P/G to PV
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        11/08/2000
+                     </td>
+                     <td align="left">
+                        Found Guilty (666666 Probation Violation)
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        11/14/2000
+                     </td>
+                     <td align="left">
+                        Prob revocation signed 11/14/2000
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        01/02/2001
+                     </td>
+                     <td align="left">
+                        OTSC issued for Failure to Appear -  Failure to Appear - Charge # 1, Possession of Marijuana  Appearance date: 01/16/2001
+                     </td>
+                     <td align="left">
+                        
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        01/06/2001
+                     </td>
+                     <td align="left">
+                        Hearing result for Review held on 12/28/2000 09:00 AM:   Hearing Held
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        05/18/2001
+                     </td>
+                     <td align="left">
+                        Case status changed:  closed
+                     </td>
+                     <td align="left">
+                        David J. Buter
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <!-- Case History -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Party History</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Case</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Role</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Status</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Filing Date</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=543044">2008-SM-0000237 </a>
+                     </td>
+                     <td align="left">
+                        Use of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        02/08/2008
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=505166">2007-SM-0001125 </a>
+                     </td>
+                     <td align="left">
+                        Use of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        05/24/2007
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=441200">2006-OM-0000921 </a>
+                     </td>
+                     <td align="left">
+                        Frequenting an Illegal Business
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        03/28/2006
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=218959">2002-SM-0001628 </a>
+                     </td>
+                     <td align="left">
+                        Use of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/30/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=218931">2002-OT-0007401 </a>
+                     </td>
+                     <td align="left">
+                        Drove while Unlicensed / License Not Valid
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        08/30/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=49065">2000-OI-8339461 </a>
+                     </td>
+                     <td align="left">
+                        Excessive speed for conditions
+                     </td>
+                     <td align="left">
+                        Administrative Closure/Age
+                     </td>
+                     <td align="left">
+                        05/08/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=50220">2000-CM-0001563 </a>
+                     </td>
+                     <td align="left">
+                        Creating a Disturbance
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        05/15/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=49067">2000-OI-8339462 </a>
+                     </td>
+                     <td align="left">
+                        Equipment-Defective or Missing
+                     </td>
+                     <td align="left">
+                        Administrative Closure/Age
+                     </td>
+                     <td align="left">
+                        05/08/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=50057">2000-OI-0817699 </a>
+                     </td>
+                     <td align="left">
+                        Improper Signal/ Fail to signal stop or turn
+                     </td>
+                     <td align="left">
+                        Administrative Closure/Age
+                     </td>
+                     <td align="left">
+                        05/12/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=42">1999-CM-0004314 </a>
+                     </td>
+                     <td align="left">
+                        Fail to Stop on Police Command
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=72">1999-SM-0001855 </a>
+                     </td>
+                     <td align="left">
+                        Possession of Marijuana
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=72">1999-SM-0001855 </a>
+                     </td>
+                     <td align="left">
+                        Probation Violation
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <br/>
+      <br/>
+      <a href="./newSearch.do?action=">New Search</a>
+   </form>
+</center>
+
+
+               </div>
+               <!-- END content padding -->
+            </div>
+            <!-- END content -->
+         </div>
+         <!-- END Main -->
+
+         <div id="footer">
+   <span> 180 Ottawa NW, Grand Rapids MI 49503
+    - Phone: 616.632.5700 - Fax: 616.632.5592</span>
+         </div>
+
+         <!-- END Footer -->
+
+         <img alt="" height="50" src="images/1px.gif" width="50px"/>
+
+      </div>
+      <!-- END Page Holder -->
+
+   
+
+
+</body></html>

@@ -1,0 +1,752 @@
+<html><head>
+
+      <title>61st District Court Payments - Grand Rapids, Michigan</title>
+      
+      <link href="style/layout.css" rel="stylesheet" type="text/css"/>
+      <link href="style/style.css" rel="stylesheet" type="text/css"/>
+      <link href="style/print.css" media="print" rel="stylesheet" type="text/css"/>
+ 
+   <script language="javascript"><!--
+   function numbersonly(myfield, e, dec)
+      {
+      var key;
+      var keychar;
+
+      if (window.event)
+         key = window.event.keyCode;
+      else if (e)
+         key = e.which;
+      else
+         return true;
+      keychar = String.fromCharCode(key);
+   
+      // control keys
+      if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27) )
+         return true;
+      // numbers
+      else if ((("0123456789").indexOf(keychar) > -1))
+         return true;
+      // decimal point jump
+      else if (dec && (keychar == "."))
+         {
+         //myfield.form.elements[dec].focus();
+         //return false;
+         return true;
+         }
+      else
+         return false;
+      } // function numbersonly(myfield, e, dec)
+      
+   function currencyFormat(fld, milSep, decSep, e) 
+      {
+      var sep = 0;
+      var key = '';
+      var i = j = 0;
+      var len = len2 = 0;
+      var strCheck = '0123456789';
+      var aux = aux2 = '';
+      var whichCode = (window.Event) ? e.which : e.keyCode;
+
+      if (whichCode == 13) 
+         return true;  // Enter
+      if (whichCode == 8) 
+         return true;  // Delete
+      if (whichCode == 9) 
+         return true;  // Tab
+      key = String.fromCharCode(whichCode);  // Get key value from key code
+      if (strCheck.indexOf(key) == -1) 
+         return false;  // Not a valid key
+      len = fld.value.length;
+      for(i = 0; i < len; i++)
+         if ((fld.value.charAt(i) != '0') && (fld.value.charAt(i) != decSep)) 
+            break;
+      aux = '';
+      for(; i < len; i++)
+         if (strCheck.indexOf(fld.value.charAt(i))!=-1) aux += fld.value.charAt(i);
+            aux += key;
+      len = aux.length;
+      if (len == 0) 
+         fld.value = '';
+      if (len == 1) 
+         fld.value = '0'+ decSep + '0' + aux;
+      if (len == 2) 
+         fld.value = '0'+ decSep + aux;
+      if (len > 2) 
+         {
+         aux2 = '';
+         for (j = 0, i = len - 3; i >= 0; i--) 
+            {
+            if (j == 3) 
+               {
+               aux2 += milSep;
+               j = 0;
+               }
+            aux2 += aux.charAt(i);
+            j++;
+            }
+         fld.value = '';
+         len2 = aux2.length;
+         for (i = len2 - 1; i >= 0; i--)
+            fld.value += aux2.charAt(i);
+         fld.value += decSep + aux.substr(len - 2, len);
+         }
+      return false;
+      }
+   
+   function toggle(id)
+      {
+      if (document.all)
+         {
+         if(document.all[id].style.display == 'none')
+            {
+            document.all[id].style.display = '';
+            } 
+         else 
+            {
+            document.all[id].style.display = 'none';
+            }
+         return false;
+         } 
+      else if (document.getElementById)
+         {
+         if(document.getElementById(id).style.display == 'none')
+            {
+            document.getElementById(id).style.display = 'block';
+            } 
+         else 
+            {
+            document.getElementById(id).style.display = 'none';
+            }
+         return false;
+         }
+      } // function toggle(id)
+      
+   function advance(currentField,nextField, len, form) 
+      {
+      if (currentField.value.length == len)
+         form[nextField].focus();
+      }
+   --></script></head>
+   
+   
+   
+   <body>
+
+      <div id="page-holder">
+
+         <img alt="" height="50" src="images/1px.gif" width="1px"/>
+
+
+         <div id="header-blu">
+            <span>61st District Court - Grand Rapids, Michigan</span>
+         </div>
+         <!-- END Header -->
+
+
+         <div id="main">
+
+
+            <!-- END Navigation -->
+            <div class="seal" id="content" style="left:0px; width:740px;">
+               <div id="content-pad">
+               
+                  
+                  
+
+
+
+
+
+<center>
+   <form action="./loadCheckout.do?caseSequence=53" method="post" name="mainform">
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Court Records Search</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#FFFFFF">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3">
+                     <td class="medium" colspan="99">
+                        <b>Criminal Case View</b>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <!-- DEFENDANT -->
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Defendant</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="40%">
+                        <strong>Defendant</strong>
+                     </td>
+                     <td width="40%">
+                        <strong>Case Number</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Language</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" bordercolor="#F3F3F3" class="medium">
+                     <td>
+                        Lewis, James Harris IV
+                     </td>
+                     <td>
+                        1999-ST-0563623
+                     </td>
+                     <td>
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="50%">
+                        <strong>Mailing address</strong>
+                     </td>
+                     <td width="30%">
+                        <strong>Race</strong>
+                     </td>
+                     <td width="10%">
+                        <strong>Sex</strong>
+                     </td>
+                     <td width="10%">
+                        <strong>Height</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td width="50%">
+                        411 Crosby St NW
+                        <br/>
+                        Grand Rapids
+                        ,
+                        MI
+                        49504
+                     </td>
+                     <td width="30%">
+                        Caucasian
+                     </td>
+                     <td width="10%">
+                        M
+                     </td>
+                     <td width="10%">
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="40%">
+                        <strong>DOB</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Weight</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Hair</strong>
+                     </td>
+                     <td width="20%">
+                        <strong>Eyes</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        09/07/1978
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td width="25%">
+                        <strong>Attorney</strong>
+                     </td>
+                     <td bgcolor="#F3F3F3" width="25%">
+                        <strong>Firm</strong>
+                     </td>
+                     <td width="25%">
+                        <strong>Attorney Phone</strong>
+                     </td>
+                     <td width="25%">
+                        <strong>Judge</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        Patrick C. Bowler
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <!-- CHARGES -->
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Charges</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Offense Date</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Date Closed</strong> 
+                     </td>
+                     <td align="left">
+                        <strong>Offense Description</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Disposition</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Disposition Date</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td>
+                        10/07/1999
+                     </td>
+                     <td>
+                        
+                     </td>
+                     <td>
+                        Speeding (non limited access)
+                     </td>
+                     <td>
+                        Guilty
+                     </td>
+                     <td>
+                        11/05/1999
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+
+      <!-- SENTENCE -->
+
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Sentence</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Fines</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Jail Days</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Probation</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Balance Due</strong>
+                     </td>
+                     <td align="left">
+                        <strong></strong>
+                     </td>
+                  </tr>
+
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        $
+                        90.00
+                     </td>
+                     <td align="left">
+                        0
+                     </td>
+                     <td align="left">
+                        N
+                     </td>
+                     <td align="left">
+                        $
+                        0.00
+                     </td>
+                     <td align="left">
+                        
+                     </td>
+                  </tr>
+                  <tr bgcolor="#F3F3F3" class="large">
+                     <td align="left" colspan="5">
+                        <strong>Bench Warrant Issued</strong>
+                     </td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left" colspan="4">
+                        N
+                     </td>
+                     <td align="right">
+                        
+                         
+                        
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      
+
+      <!-- BONDS -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Bonds</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Date Issued</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Type</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Amount</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Posted Date</strong>
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <!-- Register of Actions -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>ROA</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left" width="15%">
+                        <strong>Date</strong>
+                     </td>
+                     <td align="left" width="64%">
+                         
+                     </td>
+                     <td align="left" width="21%">
+                        <strong>Judge</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                     <td align="left">
+                        New Case Filed
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        10/26/1999
+                     </td>
+                     <td align="left">
+                        Default judgment entered and mailed -  Failure to Appear - Charge # 1, Speeding (non limited access)
+                     </td>
+                     <td align="left">
+                        
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium" valign="top">
+                     <td align="left">
+                        11/05/1999
+                     </td>
+                     <td align="left">
+                        Case Closed
+                     </td>
+                     <td align="left">
+                        No Judge
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+
+      <!-- Case History -->
+      <br/>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7D7D7D">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td bgcolor="#CCCC99" class="extralarge">
+                        <strong>Party History</strong>
+                     </td>
+                  </tr>
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <table border="0" cellpadding="1" cellspacing="0" width="90%">
+         <tbody><tr>
+            <td bgcolor="#7d7d7d">
+               <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                  <tbody><tr bgcolor="#F3F3F3" class="large">
+                     <td align="left">
+                        <strong>Case</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Role</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Status</strong>
+                     </td>
+                     <td align="left">
+                        <strong>Filing Date</strong>
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=488064">2007-OI-0294461 </a>
+                     </td>
+                     <td align="left">
+                        Equipment-Defective or Missing
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        02/01/2007
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=187080">2002-OT-0002309 </a>
+                     </td>
+                     <td align="left">
+                        Expired registration plate
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        03/19/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=204230">2002-OI-0053770 </a>
+                     </td>
+                     <td align="left">
+                        Speeding (non limited access)
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        06/12/2002
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=166337">2001-CT-0026544 </a>
+                     </td>
+                     <td align="left">
+                        Expired registration plate
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/14/2001
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=86618">2000-ST-0089441 </a>
+                     </td>
+                     <td align="left">
+                        Driving across median - limited access highway
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        11/21/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=81216">2000-ST-0089032 </a>
+                     </td>
+                     <td align="left">
+                        Speeding (Limited access)
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/24/2000
+                     </td>
+                  </tr>
+                  
+                  <tr bgcolor="#FFFFFF" class="medium">
+                     <td align="left">
+                        <a href="./loadCase.do?caseSequence=53">1999-ST-0563623 </a>
+                     </td>
+                     <td align="left">
+                        Speeding (non limited access)
+                     </td>
+                     <td align="left">
+                        Closed
+                     </td>
+                     <td align="left">
+                        10/08/1999
+                     </td>
+                  </tr>
+                  
+               </tbody></table>
+            </td>
+         </tr>
+      </tbody></table>
+      <br/>
+      <br/>
+      <br/>
+      <a href="./newSearch.do?action=">New Search</a>
+   </form>
+</center>
+
+
+               </div>
+               <!-- END content padding -->
+            </div>
+            <!-- END content -->
+         </div>
+         <!-- END Main -->
+
+         <div id="footer">
+   <span> 180 Ottawa NW, Grand Rapids MI 49503
+    - Phone: 616.632.5700 - Fax: 616.632.5592</span>
+         </div>
+
+         <!-- END Footer -->
+
+         <img alt="" height="50" src="images/1px.gif" width="50px"/>
+
+      </div>
+      <!-- END Page Holder -->
+
+   
+
+
+</body></html>
