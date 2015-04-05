@@ -13,13 +13,19 @@ c = conn.cursor()
 	# print x
 	# c.execute(str(x)) 
 	
+c.execute('DROP TABLE IF EXISTS defendant')
+c.execute('DROP TABLE IF EXISTS case_info')
+c.execute('DROP TABLE IF EXISTS charge')
+c.execute('DROP TABLE IF EXISTS sentence')
+c.execute('DROP TABLE IF EXISTS bonds')
+c.execute('DROP TABLE IF EXISTS roa')
 
-c.execute('CREATE TABLE defendant (defendant_id INT PRIMARY KEY, Name TEXT, Language TEXT, Mailing_Address TEXT, Race TEXT, Sex TEXT, Height TEXT, DOB TEXT, Weight TEXT, Hair TEXT, Eyes TEXT);')
-c.execute('CREATE TABLE case (Case_Number TEXT, Attorney TEXT, Firm TEXT, Attorney_Phone TEXT, Judge TEXT, FOREIGN KEY(defendant_id) REFERENCES defendant(defendant_id);')
-c.execute('CREATE TABLE charge (charges_id integer PRIMARY KEY, Case_Number TEXT, Offense_Date TEXT, Date_Closed TEXT, Offense TEXT, Description TEXT, Disposition TEXT, Disposition_Date, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
-c.execute('CREATE TABLE sentence (sentence_id integer PRIMARY KEY, Case_Number TEXT, Fines TEXT, Jail_Days TEXT, Probation TEXT, Balance_Due TEXT, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
-c.execute('CREATE TABLE bonds (bonds_id integer PRIMARY KEY, Case_Number TEXT, Date_Issued TEXT, Type TEXT, Amount TEXT, Posted_Date TEXT, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
-c.execute('CREATE TABLE roa (Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
+c.execute('CREATE TABLE defendant (defendant_id INT PRIMARY KEY, Name TEXT, Language TEXT, Mailing_Address TEXT, Race TEXT, Sex TEXT, Height TEXT, DOB TEXT, Weight TEXT, Hair TEXT, Eyes TEXT)')
+c.execute('CREATE TABLE case_info (Case_Number TEXT, Attorney TEXT, Firm TEXT, Attorney_Phone TEXT, Judge TEXT, FOREIGN KEY(defendant_id) REFERENCES defendant(defendant_id))')
+c.execute('CREATE TABLE charge (charges_id integer PRIMARY KEY, Case_Number TEXT, Offense_Date TEXT, Date_Closed TEXT, Offense TEXT, Description TEXT, Disposition TEXT, Disposition_Date, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
+c.execute('CREATE TABLE sentence (sentence_id integer PRIMARY KEY, Case_Number TEXT, Fines TEXT, Jail_Days TEXT, Probation TEXT, Balance_Due TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
+c.execute('CREATE TABLE bonds (bonds_id integer PRIMARY KEY, Case_Number TEXT, Date_Issued TEXT, Type TEXT, Amount TEXT, Posted_Date TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
+c.execute('CREATE TABLE roa (Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 
 conn.commit()
 
