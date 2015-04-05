@@ -4,19 +4,24 @@ from __future__ import division
 import csv, os, re, urllib2, urllib, requests, cookielib, mechanize, robotparser, time, random, string, sys, sqlite3, codecs
 from bs4 import BeautifulSoup
 
-# conn = sqlite3.connect('example.db')
-# c = conn.cursor()
+conn = sqlite3.connect('example.db')
+c = conn.cursor()
 
-#c.execute('DROP TABLE defendant, case, charges, sentence, bonds, roa') 
+# for table in ["defendant", "case", "charges", "sentence", "bonds", "roa"]:
+	# print table
+	# x =  "DROP TABLE IF EXISTS " + str(table)
+	# print x
+	# c.execute(str(x)) 
+	
 
-# c.execute('CREATE TABLE defendant (defendant_id integer primary key, Name text, Language text, Mailing_Address text, Race text, Sex text, Height text, DOB text, Weight text, Hair text, Eyes text)')
-# c.execute('CREATE TABLE case (Case_Number text, Attorney text, Firm text, Attorney_Phone text, Judge text, foreign key(defendant_id) REFERENCES defendant(defendant_id))')
-# c.execute('CREATE TABLE charges (charges_id integer primary key, Case_Number text, Offense_Date text, Date_Closed text, Offense text, Description text, Disposition text, Disposition_Date, foreign key (Case_Number) REFERENCES case(Case_Number)')
-# c.execute('CREATE TABLE sentence (sentence_id integer primary key, Case_Number text, Fines text, Jail_Days text, Probation text, Balance_Due text, foreign key (Case_Number) REFERENCES case(Case_Number))')
-# c.execute('CREATE TABLE bonds (bonds_id integer primary key, Case_Number text, Date_Issued text, Type text, Amount text, Posted_Date text, foreign key (Case_Number) REFERENCES case(Case_Number)')
-# c.execute('CREATE TABLE roa (Date_Issued text, Action text, Judge text, foreign key (Case_Number) REFERENCES case(Case_Number)')
+c.execute('CREATE TABLE defendant (defendant_id INT PRIMARY KEY, Name TEXT, Language TEXT, Mailing_Address TEXT, Race TEXT, Sex TEXT, Height TEXT, DOB TEXT, Weight TEXT, Hair TEXT, Eyes TEXT);')
+c.execute('CREATE TABLE case (Case_Number TEXT, Attorney TEXT, Firm TEXT, Attorney_Phone TEXT, Judge TEXT, FOREIGN KEY(defendant_id) REFERENCES defendant(defendant_id);')
+c.execute('CREATE TABLE charge (charges_id integer PRIMARY KEY, Case_Number TEXT, Offense_Date TEXT, Date_Closed TEXT, Offense TEXT, Description TEXT, Disposition TEXT, Disposition_Date, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
+c.execute('CREATE TABLE sentence (sentence_id integer PRIMARY KEY, Case_Number TEXT, Fines TEXT, Jail_Days TEXT, Probation TEXT, Balance_Due TEXT, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
+c.execute('CREATE TABLE bonds (bonds_id integer PRIMARY KEY, Case_Number TEXT, Date_Issued TEXT, Type TEXT, Amount TEXT, Posted_Date TEXT, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
+c.execute('CREATE TABLE roa (Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY (Case_Number) REFERENCES case(Case_Number))')
 
-# conn.commit()
+conn.commit()
 
 os.chdir("D:\grcourt-master\DataMob")
 print"AM IAM HERE ========, ",  os.getcwd()
