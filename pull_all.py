@@ -22,7 +22,7 @@ opener = urllib2.build_opener()
 opener.addheaders.append(('Cookie', headers))
 count_incompletes= open('workfile.txt', 'w')
 
-count = 12990
+count = 75266
 
 localtime = time.localtime(time.time())
 
@@ -50,7 +50,7 @@ while count < nmax2:
 			time.sleep(1.5)
 		else:
 			print "Criminal Case"
-			criminal_out = open(str(count) +'.html', 'ab')
+			criminal_out = open(str(count) +'.html, ', 'ab')
 			criminal_out.write(str(bsoup))
 			
 			count += 1
