@@ -25,7 +25,10 @@ conn.commit()
 
 os.chdir("D:\grcourt-master\DataMob")
 print"AM IAM HERE ========, ",  os.getcwd()
-os.system("del criminal_out.csv")
+try:
+	os.remove("criminal_out.csv")
+except OSError:
+	pass
 
 #Our source
 # gr_url = 'http://grcourt.org/CourtPayments/loadCase.do?caseSequence=1'
