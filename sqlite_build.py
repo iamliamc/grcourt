@@ -178,7 +178,7 @@ while count < 5:
 		# insert into
 		# get the id from insert and store in id variable
 		
-		#c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?)', section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_defendant[15], section_defendant[16])
+		c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?)', section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_defendant[15], section_defendant[16])
 		#id = c.commit();
 		# c.execute('INSERT INTO charges VALUES (?,?,?,?)', 
 		
@@ -188,4 +188,4 @@ while count < 5:
 		print count
 		time.sleep(2.5)
 #print problems, "Problem child?"
-criminal_out.close()
+#criminal_out.close()
