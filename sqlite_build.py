@@ -14,7 +14,7 @@ c.execute('DROP TABLE IF EXISTS sentence')
 c.execute('DROP TABLE IF EXISTS bonds')
 c.execute('DROP TABLE IF EXISTS roa')
 
-c.execute('CREATE TABLE defendant (defendant_id INTEGER PRIMARY KEY, Name TEXT, Language TEXT, Mailing_Address TEXT, Race TEXT, Sex TEXT, Height TEXT, DOB TEXT, Weight TEXT, Hair TEXT, Eyes TEXT)')
+c.execute('CREATE TABLE defendant (defendant_id INTEGER PRIMARY KEY, Name_Full TEXT, Case_Number TEXT, Language TEXT, Mailing_Address TEXT, Race TEXT, Sex TEXT, Height TEXT, DOB TEXT, Weight TEXT, Hair TEXT, Eyes TEXT, Attorney TEXT, Firm TEXT, Attorney_Phone TEXT, Judge TEXT)')
 c.execute('CREATE TABLE case_info (defendant_id INTEGER, Case_Number TEXT, Attorney TEXT, Firm TEXT, Attorney_Phone TEXT, Judge TEXT, FOREIGN KEY(defendant_id) REFERENCES defendant(defendant_id))')
 c.execute('CREATE TABLE charge (charges_id INTEGER PRIMARY KEY, Case_Number TEXT, Offense_Date TEXT, Date_Closed TEXT, Offense TEXT, Description TEXT, Disposition TEXT, Disposition_Date, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 c.execute('CREATE TABLE sentence (sentence_id INTEGER PRIMARY KEY, Case_Number TEXT, Fines TEXT, Jail_Days TEXT, Probation TEXT, Balance_Due TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
@@ -23,8 +23,8 @@ c.execute('CREATE TABLE roa (Case_Number TEXT, Date_Issued TEXT, Action TEXT, Ju
 
 conn.commit()
 
-os.chdir("D:\grcourt-master\DataMob")
-print"AM IAM HERE ========, ",  os.getcwd()
+os.chdir("C:\grcourt\DataMob")
+print"AM IAM HERE ======== ",  os.getcwd()
 os.system("del criminal_out.csv")
 
 #Our source
@@ -122,7 +122,7 @@ while count < 5:
 		str_def = str(section_defendant[3]).replace('\n', ' ')
 		section_defendant[3] = ' '.join(str_def.split())
 		print section_defendant, '\n'
-		section_defendant
+		sdef_t = (count, section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14])
 		
 		print "TUPLE ---- **********CHARGES******************** ---- TUPLE"
 		charge_list = []
@@ -178,7 +178,9 @@ while count < 5:
 		# insert into
 		# get the id from insert and store in id variable
 		
-		c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?)', section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14], section_defendant[15], section_defendant[16])
+		c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', sdef_t)
+		c.execute('INSERT INTO case_info VALUES (?,?,?,?,?,?,?,?,?,?,?), cinfo_t)
+		conn.commit()
 		#id = c.commit();
 		# c.execute('INSERT INTO charges VALUES (?,?,?,?)', 
 		
