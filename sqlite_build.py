@@ -23,7 +23,6 @@ c.execute('CREATE TABLE roa (Case_Number TEXT, Date_Issued TEXT, Action TEXT, Ju
 
 conn.commit()
 
-os.chdir("D:\grcourt-master\DataMob")
 print"AM IAM HERE ========, ",  os.getcwd()
 try:
 	os.remove("criminal_out.csv")
@@ -86,7 +85,7 @@ while count < 5:
 	print 'On Case #:', count
 	#criminal_out = open("criminal_out.csv", 'ab')
 	#Request Page
-	f = codecs.open(str(count) + ".html", "r",encoding='utf-8')
+	f = codecs.open("./DataMob/" + str(count) + ".html", "r",encoding='utf-8')
 	bsoup = BeautifulSoup(f.read())
 	#global problems
 	#problems = []
