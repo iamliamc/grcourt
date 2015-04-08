@@ -14,9 +14,9 @@ c.execute('DROP TABLE IF EXISTS sentence')
 c.execute('DROP TABLE IF EXISTS bonds')
 c.execute('DROP TABLE IF EXISTS roa')
 
-c.execute('CREATE TABLE defendant (defendant_id INTEGER PRIMARY KEY, Name_Full TEXT, Case_Number TEXT, Language TEXT, Mailing_Address TEXT, Race TEXT, Sex TEXT, Height TEXT, DOB TEXT, Weight TEXT, Hair TEXT, Eyes TEXT, Attorney TEXT, Firm TEXT, Attorney_Phone TEXT, Judge TEXT)')
+c.execute('CREATE TABLE defendant (defendant_id INTEGER PRIMARY KEY, Name_Full TEXT, Language TEXT, Mailing_Address TEXT, Race TEXT, Sex TEXT, Height TEXT, DOB TEXT, Weight TEXT, Hair TEXT, Eyes TEXT)')
 c.execute('CREATE TABLE case_info (defendant_id INTEGER, Case_Number TEXT, Attorney TEXT, Firm TEXT, Attorney_Phone TEXT, Judge TEXT, FOREIGN KEY(defendant_id) REFERENCES defendant(defendant_id))')
-c.execute('CREATE TABLE charge (charges_id INTEGER PRIMARY KEY, Case_Number TEXT, Offense_Date TEXT, Date_Closed TEXT, Offense TEXT, Description TEXT, Disposition TEXT, Disposition_Date, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
+c.execute('CREATE TABLE charge (charges_id INTEGER PRIMARY KEY, Case_Number TEXT, Offense_Date TEXT, Date_Closed TEXT, Offense TEXT, Disposition TEXT, Disposition_Date TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 c.execute('CREATE TABLE sentence (sentence_id INTEGER PRIMARY KEY, Case_Number TEXT, Fines TEXT, Jail_Days TEXT, Probation TEXT, Balance_Due TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 c.execute('CREATE TABLE bonds (bonds_id INTEGER PRIMARY KEY, Case_Number TEXT, Date_Issued TEXT, Type TEXT, Amount TEXT, Posted_Date TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 c.execute('CREATE TABLE roa (Case_Number TEXT, Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
@@ -81,7 +81,7 @@ def handle_mult(section_inf, next_list, fields):
 		
 count = 1
 		
-while count < 5:
+while count < 7:
 	print 'On Case #:', count
 	#criminal_out = open("criminal_out.csv", 'ab')
 	#Request Page
@@ -124,7 +124,8 @@ while count < 5:
 		str_def = str(section_defendant[3]).replace('\n', ' ')
 		section_defendant[3] = ' '.join(str_def.split())
 		print section_defendant, '\n'
-		sdef_t = (count, section_defendant[0], section_defendant[1], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14])
+		sdef_t = (None, section_defendant[0], section_defendant[2], section_defendant[3], section_defendant[4], section_defendant[5], section_defendant[6], section_defendant[7], section_defendant[8], section_defendant[9], section_defendant[10])
+		sdef_t2 = (None, section_defendant[1], section_defendant[11], section_defendant[12], section_defendant[13], section_defendant[14])
 		
 		print "TUPLE ---- **********CHARGES******************** ---- TUPLE"
 		charge_list = []
@@ -133,7 +134,6 @@ while count < 5:
 		section_charges = stable_table(sec_charges, charge_list)
 		section_charges = handle_mult(section_charges, [], 5)
 		print section_charges, '\n'
-			
 		
 		print "+++++++++++++++++SENTENCE+++++++++++++++"
 		sen_list = []
@@ -180,16 +180,33 @@ while count < 5:
 		# insert into
 		# get the id from insert and store in id variable
 		
-		c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', sdef_t)
-		c.execute('INSERT INTO case_info VALUES (?,?,?,?,?,?,?,?,?,?,?)', cinfo_t)
+		c.execute('INSERT INTO defendant VALUES (?,?,?,?,?,?,?,?,?,?,?)', sdef_t)
+		c.execute('INSERT INTO case_info VALUES (?,?,?,?,?,?)', sdef_t2)
+		for tpl in section_charges: 
+			scha_t = (None, section_defendant[1], tpl[0], tpl[1], tpl[2], tpl[3], tpl[4]) 
+			c.execute('INSERT INTO charge VALUES (?,?,?,?,?,?,?)', (scha_t))
+		ssen_t = (None, section_defendant[1], section_sentence[0], section_sentence[1], section_sentence[2], section_sentence[3])
+		c.execute('INSERT INTO sentence VALUES (?,?,?,?,?,?)', (ssen_t))
+		for tpl in section_bonds:
+			sbon_t = (None, section_defendant[1], tpl[0], tpl[1], tpl[2], tpl[3])
+			c.execute('INSERT INTO bonds VALUES (?,?,?,?,?,?)', sbon_t)
+
+		
+#c.execute('CREATE TABLE roa (Case_Number TEXT, Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')		
+		
 		conn.commit()
-		#id = c.commit();
-		# c.execute('INSERT INTO charges VALUES (?,?,?,?)', 
-		
-		
 		
 		count += 1
 		print count
 		time.sleep(2.5)
 #print problems, "Problem child?"
 #criminal_out.close()
+
+
+# Test Queries:
+# select * from case_info
+# join defendant on defendant.defendant_id = case_info.defendant_id;
+
+# select defendant.Name_Full, case_info.case_Number, charge.* from defendant
+# join case_info on case_info.defendant_id = defendant.defendant_id
+# join charge on charge.case_Number = case_info.Case_Number;
