@@ -19,11 +19,11 @@ c.execute('CREATE TABLE case_info (defendant_id INTEGER, Case_Number TEXT, Attor
 c.execute('CREATE TABLE charge (charges_id INTEGER PRIMARY KEY, Case_Number TEXT, Offense_Date TEXT, Date_Closed TEXT, Offense TEXT, Disposition TEXT, Disposition_Date TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 c.execute('CREATE TABLE sentence (sentence_id INTEGER PRIMARY KEY, Case_Number TEXT, Fines TEXT, Jail_Days TEXT, Probation TEXT, Balance_Due TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 c.execute('CREATE TABLE bonds (bonds_id INTEGER PRIMARY KEY, Case_Number TEXT, Date_Issued TEXT, Type TEXT, Amount TEXT, Posted_Date TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
-c.execute('CREATE TABLE roa (Case_Number TEXT, Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
+c.execute('CREATE TABLE roa (roa_id INTEGER PRIMARY KEY, Case_Number TEXT, Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')
 
 conn.commit()
 
-os.chdir("C:\grcourt\DataMob")
+os.chdir(".\DataMob")
 print"AM IAM HERE ======== ",  os.getcwd()
 os.system("del criminal_out.csv")
 
@@ -197,8 +197,8 @@ while count < 7:
 			sbon_t = (None, section_defendant[1], tpl[0], tpl[1], tpl[2], tpl[3])
 			c.execute('INSERT INTO bonds VALUES (?,?,?,?,?,?)', sbon_t)
 		for tpl in section_roa:
-			sbon_t = (None, section_defendant[1], tpl[0], tpl[1], tpl[2], tpl[3])
-			c.execute('INSERT INTO roa VALUES (?,?,?,?,?,?)
+			sroa_t = (None, section_defendant[1], tpl[0], tpl[1], tpl[2])
+			c.execute('INSERT INTO roa VALUES (?,?,?,?,?)', sroa_t)
 		
 		
 #c.execute('CREATE TABLE roa (Case_Number TEXT, Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')		
