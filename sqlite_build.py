@@ -160,6 +160,14 @@ while count < 7:
 		section_bonds = handle_mult(section_bonds, [], 4)
 		print handle_mult(section_bonds, [], 4), '\n'
 		
+		print "TUPLE ---- ++++++++++++++++ROA+++++++++++++++++++++ ---- TUPLE"
+		roa_list = []
+		regex_roa = re.compile(r'.*<!-- Register of Actions -->(.*)<!-- Case History -->.*', re.DOTALL)
+		sec_roa = regex_roa.findall(str(bsoup))
+		section_roa = stable_table(sec_roa, roa_list)
+		section_roa = handle_mult(section_roa, [], 4)
+		print handle_mult(section_roa, [], 3), '\n'
+		
 		print "TUPLE ---- +++++++++++++Case History+++++++++++++++++++++ ---- TUPLE"
 		case_list = []
 		regex_casehist = re.compile(r'.*<!-- Case History -->(.*)<!-- END Main -->.*', re.DOTALL)
@@ -188,6 +196,9 @@ while count < 7:
 		for tpl in section_bonds:
 			sbon_t = (None, section_defendant[1], tpl[0], tpl[1], tpl[2], tpl[3])
 			c.execute('INSERT INTO bonds VALUES (?,?,?,?,?,?)', sbon_t)
+		for tpl in section_roa:
+			sbon_t = (None, section_defendant[1], tpl[0], tpl[1], tpl[2], tpl[3])
+			c.execute('INSERT INTO roa VALUES (?,?,?,?,?,?)
 		
 		
 #c.execute('CREATE TABLE roa (Case_Number TEXT, Date_Issued TEXT, Action TEXT, Judge TEXT, FOREIGN KEY(Case_Number) REFERENCES case_info(Case_Number))')		
