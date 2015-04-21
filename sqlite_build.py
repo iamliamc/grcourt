@@ -79,7 +79,7 @@ def handle_mult(section_inf, next_list, fields):
 		
 count = 1
 		
-while count < 7:
+while count < 100:
 	print 'On Case #:', count
 	#criminal_out = open("criminal_out.csv", 'ab')
 	#Request Page
@@ -95,12 +95,12 @@ while count < 7:
 		print "Civil Case Continue..." 
 		count +=1
 		print "ZZZZZZZ..."
-		time.sleep(2.5)
+		#time.sleep(2.5)
 	elif data_ccsort.string == 'Unable to load case data':
 		print "Unable to load case data"
 		count +=1
 		print "ZZZZZZZ..."
-		time.sleep(2.5)
+		#time.sleep(2.5)
 	else:
 		print "Criminal Case"
 	
@@ -165,7 +165,7 @@ while count < 7:
 		regex_roa = re.compile(r'.*<!-- Register of Actions -->(.*)<!-- Case History -->.*', re.DOTALL)
 		sec_roa = regex_roa.findall(str(bsoup))
 		section_roa = stable_table(sec_roa, roa_list)
-		section_roa = handle_mult(section_roa, [], 4)
+		section_roa = handle_mult(section_roa, [], 3)
 		print handle_mult(section_roa, [], 3), '\n'
 		
 		print "TUPLE ---- +++++++++++++Case History+++++++++++++++++++++ ---- TUPLE"
@@ -207,7 +207,7 @@ while count < 7:
 		
 		count += 1
 		print count
-		time.sleep(2.5)
+		#time.sleep(2.5)
 #print problems, "Problem child?"
 #criminal_out.close()
 
